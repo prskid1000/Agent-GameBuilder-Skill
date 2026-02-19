@@ -47,11 +47,11 @@ const MACHINE_UPGRADE_COST = {
 		'cost' :{Enum.Item.TOMATO: 30, Enum.Item.WHEAT: 20},
 		'icon': preload("res://graphics/icons/sprinkler.png")},
 	Enum.Machine.FISHER: {
-		'name': 'Sprinkler',
+		'name': 'Fisher',
 		'cost' :{Enum.Item.WOOD: 25, Enum.Item.FISH: 15},
 		'icon': preload("res://graphics/icons/fisher.png")},
 	Enum.Machine.SCARECROW: {
-		'name': 'Sprinkler',
+		'name': 'Scarecrow',
 		'cost' : {Enum.Item.PUMPKIN: 15, Enum.Item.CORN: 15},
 		'icon': preload("res://graphics/icons/scarecrow.png")}}
 const HOUSE_COST = {
