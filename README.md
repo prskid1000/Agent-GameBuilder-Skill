@@ -1,30 +1,33 @@
-# .games
+# Agent-GameBuilder-Skill
 
-Godot 4 game workspace with Cursor agent skills and example projects.
+A Godot 4 game workspace with Cursor agent skills for building 2D games—adventure/RPG or Stardew-style farming.
 
-## Skills (Agent)
+## Skills
 
-- **godot-adventure-rpg** — 2D top-down adventure/RPG: combat, enemies, NavMesh2D, levels, inventory, HUD, dialogue, save/load, bosses.
-- **godot-farming-game** — Stardew-style farming: crops, fishing, machines, day/night, plants, resources, UI (based on GodewValley example).
+| Skill | Focus | Features |
+| ----- | ----- | -------- |
+| **godot-adventure-rpg** | 2D top-down adventure/RPG | Combat, enemies, NavMesh2D, levels, inventory, HUD, dialogue, save/load, bosses |
+| **godot-farming-game** | Stardew-style farming | Crops, fishing, machines, day/night, plants, resources, UI (based on GodewValley) |
 
-Skills live in `.cursor/skills/` and use `@.docs` for Godot engine documentation.
+- Skills live in `.cursor/skills/`.
+- In Cursor, use **@.docs** to pull in Godot engine documentation when working with the agent.
 
 ## Project layout
 
 | Path | Description |
-|------|-------------|
+| ---- | ----------- |
 | `.cursor/skills/` | Agent skills (godot-adventure-rpg, godot-farming-game) |
 | `.examples/` | Godot 4.5 example: **GodewValley** (farming game) |
 | `.docs/godot-docs-md/` | Godot engine docs (Markdown) |
 
 ## Example: GodewValley
 
-- **Engine:** Godot 4.5  
-- **Run:** Open `.examples/project.godot` in Godot and run, or set `run/main_scene` and press Play.  
-- **Code:** 24 GDScript files — player, tools, plants, machines (sprinkler, fisher, scarecrow), levels, UI, fishing minigame, global `Enum` + `Data` autoloads.
+- **Engine:** Godot 4.5
+- **Run:** Open `.examples/project.godot` in Godot, then run the project (or set `run/main_scene` and press Play).
+- **Code:** 24 GDScript files—player, tools, plants, machines (sprinkler, fisher, scarecrow), levels, UI, fishing minigame, and global `Enum` + `Data` autoloads.
 
-## Code check (summary)
+## Codebase notes
 
-- **Structure:** Clear separation (global enums/data, scenes for characters/objects/machines/levels/UI/vfx). Autoloads `Enum` and `Data` used consistently.
-- **Scripts:** Typed vars, signals, and state handled in a readable way (e.g. `player.gd` with `Enum.State` and tool/machine cycles).
+- **Structure:** Clear separation: global enums/data, scenes for characters, objects, machines, levels, UI, and VFX. Autoloads `Enum` and `Data` are used consistently.
+- **Scripts:** Typed variables, signals, and state are handled in a readable way (e.g. `player.gd` with `Enum.State` and tool/machine cycles).
 - **Fix applied:** In `global/data.gd`, `MACHINE_UPGRADE_COST` had `'name': 'Sprinkler'` for FISHER and SCARECROW; corrected to `'Fisher'` and `'Scarecrow'`.
