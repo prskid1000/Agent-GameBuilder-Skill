@@ -1,0 +1,13 @@
+<span id="class_OpenXRExtensionWrapperExtension"></span>
+
+## OpenXRExtensionWrapperExtension
+
+**Deprecated:** Use [OpenXRExtensionWrapper](class_openxrextensionwrapper.md#class_OpenXRExtensionWrapper) instead.
+
+**Inherits:** [OpenXRExtensionWrapper](class_openxrextensionwrapper.md#class_OpenXRExtensionWrapper) **<** [Object](class_object.md#class_Object)
+
+Allows implementing OpenXR extensions with GDExtension.
+
+### Description
+
+**OpenXRExtensionWrapperExtension** allows implementing OpenXR extensions with GDExtension. The extension should be registered with [OpenXRExtensionWrapper.register_extension_wrapper()](class_openxrextensionwrapper.md#class_OpenXRExtensionWrapper_method_register_extension_wrapper).

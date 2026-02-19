@@ -1,0 +1,2 @@
+# .docs/rst_to_md.py uses only the standard library (pathlib, re, os, subprocess, shutil).
+# No extra packages required. Add project dependencies below if needed.

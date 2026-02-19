@@ -1,0 +1,39 @@
+<span id="class_AudioEffectEQ10"></span>
+
+## AudioEffectEQ10
+
+**Inherits:** [AudioEffectEQ](class_audioeffecteq.md#class_AudioEffectEQ) **<** [AudioEffect](class_audioeffect.md#class_AudioEffect) **<** [Resource](class_resource.md#class_Resource) **<** [RefCounted](class_refcounted.md#class_RefCounted) **<** [Object](class_object.md#class_Object)
+
+Adds a 10-band equalizer audio effect to an Audio bus. Gives you control over frequencies from 31 Hz to 16000 Hz.
+
+Each frequency can be modulated between -60/+24 dB.
+
+### Description
+
+Frequency bands:
+
+Band 1: 31 Hz
+
+Band 2: 62 Hz
+
+Band 3: 125 Hz
+
+Band 4: 250 Hz
+
+Band 5: 500 Hz
+
+Band 6: 1000 Hz
+
+Band 7: 2000 Hz
+
+Band 8: 4000 Hz
+
+Band 9: 8000 Hz
+
+Band 10: 16000 Hz
+
+See also [AudioEffectEQ](class_audioeffecteq.md#class_AudioEffectEQ), [AudioEffectEQ6](class_audioeffecteq6.md#class_AudioEffectEQ6), [AudioEffectEQ21](class_audioeffecteq21.md#class_AudioEffectEQ21).
+
+### Tutorials
+
+- [Audio buses](../tutorials/audio/audio_buses.md)

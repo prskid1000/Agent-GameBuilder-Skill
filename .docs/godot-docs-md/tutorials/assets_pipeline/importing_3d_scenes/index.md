@@ -1,0 +1,22 @@
+<span id="doc_importing_3d_scenes"></span>
+
+## Importing 3D scenes
+
+Godot supports importing 3D scenes from various file formats.
+This documentation section describes what those formats are, and how to use
+them, including exporting with the correct conventions and best practices,
+and how to customize the node type using a suffix in the node name.
+The import configuration article describes how to customize the
+imported data using the import dock, the advanced import settings
+dialog, and inherited scenes.
+
+- [Available Formats](available_formats.md)
+- [Model Export Considerations](model_export_considerations.md)
+- [Node Type Customization](node_type_customization.md)
+- [Import Configuration](import_configuration.md)
+- [Advanced Import Settings](advanced_import_settings.md)
+.. seealso::
+
+    3D scenes can be loaded at runtime using
+    [runtime file loading and saving](../../io/runtime_file_loading_and_saving.md#doc_runtime_file_loading_and_saving_3d_scenes),
+    including from an exported project.

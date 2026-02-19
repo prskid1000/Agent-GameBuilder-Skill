@@ -1,0 +1,1786 @@
+<span id="class_String"></span>
+
+## String
+
+A built-in type for strings.
+
+### Description
+
+This is the built-in string Variant type (and the one used by GDScript). Strings may contain any number of Unicode characters, and expose methods useful for manipulating and generating strings. Strings are reference-counted and use a copy-on-write approach (every modification to a string returns a new **String**), so passing them around is cheap in resources.
+
+Some string methods have corresponding variations. Variations suffixed with `n` ([countn()](class_string.md#class_String_method_countn), [findn()](class_string.md#class_String_method_findn), [replacen()](class_string.md#class_String_method_replacen), etc.) are **case-insensitive** (they make no distinction between uppercase and lowercase letters). Method variations prefixed with `r` ([rfind()](class_string.md#class_String_method_rfind), [rsplit()](class_string.md#class_String_method_rsplit), etc.) are reversed, and start from the end of the string, instead of the beginning.
+
+To convert any [Variant](class_variant.md#class_Variant) to or from a string, see @GlobalScope.str(), @GlobalScope.str_to_var(), and @GlobalScope.var_to_str().
+
+ **Note:** In a boolean context, a string will evaluate to `false` if it is empty (`""`). Otherwise, a string will always evaluate to `true`.
+
+> **Note:** There are notable differences when using this API with C#. See :ref:`doc_c_sharp_differences` for more information.
+
+### Tutorials
+
+- [GDScript format strings](../tutorials/scripting/gdscript/gdscript_format_string.md)
+
+### Constructors
+
+
+| [String](class_string.md#class_String) | [String](class_string.md#class_String_constructor_String) ( ) |
+| --- | --- |
+| [String](class_string.md#class_String) | [String](class_string.md#class_String_constructor_String) ( from: [String](class_string.md#class_String) ) |
+| [String](class_string.md#class_String) | [String](class_string.md#class_String_constructor_String) ( from: [NodePath](class_nodepath.md#class_NodePath) ) |
+| [String](class_string.md#class_String) | [String](class_string.md#class_String_constructor_String) ( from: [StringName](class_stringname.md#class_StringName) ) |
+
+### Methods
+
+
+| [bool](class_bool.md#class_bool) | [begins_with](class_string.md#class_String_method_begins_with) ( text: [String](class_string.md#class_String) ) const |
+| --- | --- |
+| [PackedStringArray](class_packedstringarray.md#class_PackedStringArray) | [bigrams](class_string.md#class_String_method_bigrams) ( ) const |
+| [int](class_int.md#class_int) | [bin_to_int](class_string.md#class_String_method_bin_to_int) ( ) const |
+| [String](class_string.md#class_String) | [c_escape](class_string.md#class_String_method_c_escape) ( ) const |
+| [String](class_string.md#class_String) | [c_unescape](class_string.md#class_String_method_c_unescape) ( ) const |
+| [String](class_string.md#class_String) | [capitalize](class_string.md#class_String_method_capitalize) ( ) const |
+| [int](class_int.md#class_int) | [casecmp_to](class_string.md#class_String_method_casecmp_to) ( to: [String](class_string.md#class_String) ) const |
+| [String](class_string.md#class_String) | [chr](class_string.md#class_String_method_chr) ( code: [int](class_int.md#class_int) ) static |
+| [bool](class_bool.md#class_bool) | [contains](class_string.md#class_String_method_contains) ( what: [String](class_string.md#class_String) ) const |
+| [bool](class_bool.md#class_bool) | [containsn](class_string.md#class_String_method_containsn) ( what: [String](class_string.md#class_String) ) const |
+| [int](class_int.md#class_int) | [count](class_string.md#class_String_method_count) ( what: [String](class_string.md#class_String), from: [int](class_int.md#class_int) = 0, to: [int](class_int.md#class_int) = 0 ) const |
+| [int](class_int.md#class_int) | [countn](class_string.md#class_String_method_countn) ( what: [String](class_string.md#class_String), from: [int](class_int.md#class_int) = 0, to: [int](class_int.md#class_int) = 0 ) const |
+| [String](class_string.md#class_String) | [dedent](class_string.md#class_String_method_dedent) ( ) const |
+| [bool](class_bool.md#class_bool) | [ends_with](class_string.md#class_String_method_ends_with) ( text: [String](class_string.md#class_String) ) const |
+| [String](class_string.md#class_String) | [erase](class_string.md#class_String_method_erase) ( position: [int](class_int.md#class_int), chars: [int](class_int.md#class_int) = 1 ) const |
+| [int](class_int.md#class_int) | [filecasecmp_to](class_string.md#class_String_method_filecasecmp_to) ( to: [String](class_string.md#class_String) ) const |
+| [int](class_int.md#class_int) | [filenocasecmp_to](class_string.md#class_String_method_filenocasecmp_to) ( to: [String](class_string.md#class_String) ) const |
+| [int](class_int.md#class_int) | [find](class_string.md#class_String_method_find) ( what: [String](class_string.md#class_String), from: [int](class_int.md#class_int) = 0 ) const |
+| [int](class_int.md#class_int) | [findn](class_string.md#class_String_method_findn) ( what: [String](class_string.md#class_String), from: [int](class_int.md#class_int) = 0 ) const |
+| [String](class_string.md#class_String) | [format](class_string.md#class_String_method_format) ( values: [Variant](class_variant.md#class_Variant), placeholder: [String](class_string.md#class_String) = "{_}" ) const |
+| [String](class_string.md#class_String) | [get_base_dir](class_string.md#class_String_method_get_base_dir) ( ) const |
+| [String](class_string.md#class_String) | [get_basename](class_string.md#class_String_method_get_basename) ( ) const |
+| [String](class_string.md#class_String) | [get_extension](class_string.md#class_String_method_get_extension) ( ) const |
+| [String](class_string.md#class_String) | [get_file](class_string.md#class_String_method_get_file) ( ) const |
+| [String](class_string.md#class_String) | [get_slice](class_string.md#class_String_method_get_slice) ( delimiter: [String](class_string.md#class_String), slice: [int](class_int.md#class_int) ) const |
+| [int](class_int.md#class_int) | [get_slice_count](class_string.md#class_String_method_get_slice_count) ( delimiter: [String](class_string.md#class_String) ) const |
+| [String](class_string.md#class_String) | [get_slicec](class_string.md#class_String_method_get_slicec) ( delimiter: [int](class_int.md#class_int), slice: [int](class_int.md#class_int) ) const |
+| [int](class_int.md#class_int) | [hash](class_string.md#class_String_method_hash) ( ) const |
+| [PackedByteArray](class_packedbytearray.md#class_PackedByteArray) | [hex_decode](class_string.md#class_String_method_hex_decode) ( ) const |
+| [int](class_int.md#class_int) | [hex_to_int](class_string.md#class_String_method_hex_to_int) ( ) const |
+| [String](class_string.md#class_String) | [humanize_size](class_string.md#class_String_method_humanize_size) ( size: [int](class_int.md#class_int) ) static |
+| [String](class_string.md#class_String) | [indent](class_string.md#class_String_method_indent) ( prefix: [String](class_string.md#class_String) ) const |
+| [String](class_string.md#class_String) | [insert](class_string.md#class_String_method_insert) ( position: [int](class_int.md#class_int), what: [String](class_string.md#class_String) ) const |
+| [bool](class_bool.md#class_bool) | [is_absolute_path](class_string.md#class_String_method_is_absolute_path) ( ) const |
+| [bool](class_bool.md#class_bool) | [is_empty](class_string.md#class_String_method_is_empty) ( ) const |
+| [bool](class_bool.md#class_bool) | [is_relative_path](class_string.md#class_String_method_is_relative_path) ( ) const |
+| [bool](class_bool.md#class_bool) | [is_subsequence_of](class_string.md#class_String_method_is_subsequence_of) ( text: [String](class_string.md#class_String) ) const |
+| [bool](class_bool.md#class_bool) | [is_subsequence_ofn](class_string.md#class_String_method_is_subsequence_ofn) ( text: [String](class_string.md#class_String) ) const |
+| [bool](class_bool.md#class_bool) | [is_valid_ascii_identifier](class_string.md#class_String_method_is_valid_ascii_identifier) ( ) const |
+| [bool](class_bool.md#class_bool) | [is_valid_filename](class_string.md#class_String_method_is_valid_filename) ( ) const |
+| [bool](class_bool.md#class_bool) | [is_valid_float](class_string.md#class_String_method_is_valid_float) ( ) const |
+| [bool](class_bool.md#class_bool) | [is_valid_hex_number](class_string.md#class_String_method_is_valid_hex_number) ( with_prefix: [bool](class_bool.md#class_bool) = false ) const |
+| [bool](class_bool.md#class_bool) | [is_valid_html_color](class_string.md#class_String_method_is_valid_html_color) ( ) const |
+| [bool](class_bool.md#class_bool) | [is_valid_identifier](class_string.md#class_String_method_is_valid_identifier) ( ) const |
+| [bool](class_bool.md#class_bool) | [is_valid_int](class_string.md#class_String_method_is_valid_int) ( ) const |
+| [bool](class_bool.md#class_bool) | [is_valid_ip_address](class_string.md#class_String_method_is_valid_ip_address) ( ) const |
+| [bool](class_bool.md#class_bool) | [is_valid_unicode_identifier](class_string.md#class_String_method_is_valid_unicode_identifier) ( ) const |
+| [String](class_string.md#class_String) | [join](class_string.md#class_String_method_join) ( parts: [PackedStringArray](class_packedstringarray.md#class_PackedStringArray) ) const |
+| [String](class_string.md#class_String) | [json_escape](class_string.md#class_String_method_json_escape) ( ) const |
+| [String](class_string.md#class_String) | [left](class_string.md#class_String_method_left) ( length: [int](class_int.md#class_int) ) const |
+| [int](class_int.md#class_int) | [length](class_string.md#class_String_method_length) ( ) const |
+| [String](class_string.md#class_String) | [lpad](class_string.md#class_String_method_lpad) ( min_length: [int](class_int.md#class_int), character: [String](class_string.md#class_String) = " " ) const |
+| [String](class_string.md#class_String) | [lstrip](class_string.md#class_String_method_lstrip) ( chars: [String](class_string.md#class_String) ) const |
+| [bool](class_bool.md#class_bool) | [match](class_string.md#class_String_method_match) ( expr: [String](class_string.md#class_String) ) const |
+| [bool](class_bool.md#class_bool) | [matchn](class_string.md#class_String_method_matchn) ( expr: [String](class_string.md#class_String) ) const |
+| [PackedByteArray](class_packedbytearray.md#class_PackedByteArray) | [md5_buffer](class_string.md#class_String_method_md5_buffer) ( ) const |
+| [String](class_string.md#class_String) | [md5_text](class_string.md#class_String_method_md5_text) ( ) const |
+| [int](class_int.md#class_int) | [naturalcasecmp_to](class_string.md#class_String_method_naturalcasecmp_to) ( to: [String](class_string.md#class_String) ) const |
+| [int](class_int.md#class_int) | [naturalnocasecmp_to](class_string.md#class_String_method_naturalnocasecmp_to) ( to: [String](class_string.md#class_String) ) const |
+| [int](class_int.md#class_int) | [nocasecmp_to](class_string.md#class_String_method_nocasecmp_to) ( to: [String](class_string.md#class_String) ) const |
+| [String](class_string.md#class_String) | [num](class_string.md#class_String_method_num) ( number: [float](class_float.md#class_float), decimals: [int](class_int.md#class_int) = -1 ) static |
+| [String](class_string.md#class_String) | [num_int64](class_string.md#class_String_method_num_int64) ( number: [int](class_int.md#class_int), base: [int](class_int.md#class_int) = 10, capitalize_hex: [bool](class_bool.md#class_bool) = false ) static |
+| [String](class_string.md#class_String) | [num_scientific](class_string.md#class_String_method_num_scientific) ( number: [float](class_float.md#class_float) ) static |
+| [String](class_string.md#class_String) | [num_uint64](class_string.md#class_String_method_num_uint64) ( number: [int](class_int.md#class_int), base: [int](class_int.md#class_int) = 10, capitalize_hex: [bool](class_bool.md#class_bool) = false ) static |
+| [String](class_string.md#class_String) | [pad_decimals](class_string.md#class_String_method_pad_decimals) ( digits: [int](class_int.md#class_int) ) const |
+| [String](class_string.md#class_String) | [pad_zeros](class_string.md#class_String_method_pad_zeros) ( digits: [int](class_int.md#class_int) ) const |
+| [String](class_string.md#class_String) | [path_join](class_string.md#class_String_method_path_join) ( path: [String](class_string.md#class_String) ) const |
+| [String](class_string.md#class_String) | [remove_char](class_string.md#class_String_method_remove_char) ( what: [int](class_int.md#class_int) ) const |
+| [String](class_string.md#class_String) | [remove_chars](class_string.md#class_String_method_remove_chars) ( chars: [String](class_string.md#class_String) ) const |
+| [String](class_string.md#class_String) | [repeat](class_string.md#class_String_method_repeat) ( count: [int](class_int.md#class_int) ) const |
+| [String](class_string.md#class_String) | [replace](class_string.md#class_String_method_replace) ( what: [String](class_string.md#class_String), forwhat: [String](class_string.md#class_String) ) const |
+| [String](class_string.md#class_String) | [replace_char](class_string.md#class_String_method_replace_char) ( key: [int](class_int.md#class_int), with: [int](class_int.md#class_int) ) const |
+| [String](class_string.md#class_String) | [replace_chars](class_string.md#class_String_method_replace_chars) ( keys: [String](class_string.md#class_String), with: [int](class_int.md#class_int) ) const |
+| [String](class_string.md#class_String) | [replacen](class_string.md#class_String_method_replacen) ( what: [String](class_string.md#class_String), forwhat: [String](class_string.md#class_String) ) const |
+| [String](class_string.md#class_String) | [reverse](class_string.md#class_String_method_reverse) ( ) const |
+| [int](class_int.md#class_int) | [rfind](class_string.md#class_String_method_rfind) ( what: [String](class_string.md#class_String), from: [int](class_int.md#class_int) = -1 ) const |
+| [int](class_int.md#class_int) | [rfindn](class_string.md#class_String_method_rfindn) ( what: [String](class_string.md#class_String), from: [int](class_int.md#class_int) = -1 ) const |
+| [String](class_string.md#class_String) | [right](class_string.md#class_String_method_right) ( length: [int](class_int.md#class_int) ) const |
+| [String](class_string.md#class_String) | [rpad](class_string.md#class_String_method_rpad) ( min_length: [int](class_int.md#class_int), character: [String](class_string.md#class_String) = " " ) const |
+| [PackedStringArray](class_packedstringarray.md#class_PackedStringArray) | [rsplit](class_string.md#class_String_method_rsplit) ( delimiter: [String](class_string.md#class_String) = "", allow_empty: [bool](class_bool.md#class_bool) = true, maxsplit: [int](class_int.md#class_int) = 0 ) const |
+| [String](class_string.md#class_String) | [rstrip](class_string.md#class_String_method_rstrip) ( chars: [String](class_string.md#class_String) ) const |
+| [PackedByteArray](class_packedbytearray.md#class_PackedByteArray) | [sha1_buffer](class_string.md#class_String_method_sha1_buffer) ( ) const |
+| [String](class_string.md#class_String) | [sha1_text](class_string.md#class_String_method_sha1_text) ( ) const |
+| [PackedByteArray](class_packedbytearray.md#class_PackedByteArray) | [sha256_buffer](class_string.md#class_String_method_sha256_buffer) ( ) const |
+| [String](class_string.md#class_String) | [sha256_text](class_string.md#class_String_method_sha256_text) ( ) const |
+| [float](class_float.md#class_float) | [similarity](class_string.md#class_String_method_similarity) ( text: [String](class_string.md#class_String) ) const |
+| [String](class_string.md#class_String) | [simplify_path](class_string.md#class_String_method_simplify_path) ( ) const |
+| [PackedStringArray](class_packedstringarray.md#class_PackedStringArray) | [split](class_string.md#class_String_method_split) ( delimiter: [String](class_string.md#class_String) = "", allow_empty: [bool](class_bool.md#class_bool) = true, maxsplit: [int](class_int.md#class_int) = 0 ) const |
+| [PackedFloat64Array](class_packedfloat64array.md#class_PackedFloat64Array) | [split_floats](class_string.md#class_String_method_split_floats) ( delimiter: [String](class_string.md#class_String), allow_empty: [bool](class_bool.md#class_bool) = true ) const |
+| [String](class_string.md#class_String) | [strip_edges](class_string.md#class_String_method_strip_edges) ( left: [bool](class_bool.md#class_bool) = true, right: [bool](class_bool.md#class_bool) = true ) const |
+| [String](class_string.md#class_String) | [strip_escapes](class_string.md#class_String_method_strip_escapes) ( ) const |
+| [String](class_string.md#class_String) | [substr](class_string.md#class_String_method_substr) ( from: [int](class_int.md#class_int), len: [int](class_int.md#class_int) = -1 ) const |
+| [PackedByteArray](class_packedbytearray.md#class_PackedByteArray) | [to_ascii_buffer](class_string.md#class_String_method_to_ascii_buffer) ( ) const |
+| [String](class_string.md#class_String) | [to_camel_case](class_string.md#class_String_method_to_camel_case) ( ) const |
+| [float](class_float.md#class_float) | [to_float](class_string.md#class_String_method_to_float) ( ) const |
+| [int](class_int.md#class_int) | [to_int](class_string.md#class_String_method_to_int) ( ) const |
+| [String](class_string.md#class_String) | [to_kebab_case](class_string.md#class_String_method_to_kebab_case) ( ) const |
+| [String](class_string.md#class_String) | [to_lower](class_string.md#class_String_method_to_lower) ( ) const |
+| [PackedByteArray](class_packedbytearray.md#class_PackedByteArray) | [to_multibyte_char_buffer](class_string.md#class_String_method_to_multibyte_char_buffer) ( encoding: [String](class_string.md#class_String) = "" ) const |
+| [String](class_string.md#class_String) | [to_pascal_case](class_string.md#class_String_method_to_pascal_case) ( ) const |
+| [String](class_string.md#class_String) | [to_snake_case](class_string.md#class_String_method_to_snake_case) ( ) const |
+| [String](class_string.md#class_String) | [to_upper](class_string.md#class_String_method_to_upper) ( ) const |
+| [PackedByteArray](class_packedbytearray.md#class_PackedByteArray) | [to_utf8_buffer](class_string.md#class_String_method_to_utf8_buffer) ( ) const |
+| [PackedByteArray](class_packedbytearray.md#class_PackedByteArray) | [to_utf16_buffer](class_string.md#class_String_method_to_utf16_buffer) ( ) const |
+| [PackedByteArray](class_packedbytearray.md#class_PackedByteArray) | [to_utf32_buffer](class_string.md#class_String_method_to_utf32_buffer) ( ) const |
+| [PackedByteArray](class_packedbytearray.md#class_PackedByteArray) | [to_wchar_buffer](class_string.md#class_String_method_to_wchar_buffer) ( ) const |
+| [String](class_string.md#class_String) | [trim_prefix](class_string.md#class_String_method_trim_prefix) ( prefix: [String](class_string.md#class_String) ) const |
+| [String](class_string.md#class_String) | [trim_suffix](class_string.md#class_String_method_trim_suffix) ( suffix: [String](class_string.md#class_String) ) const |
+| [int](class_int.md#class_int) | [unicode_at](class_string.md#class_String_method_unicode_at) ( at: [int](class_int.md#class_int) ) const |
+| [String](class_string.md#class_String) | [uri_decode](class_string.md#class_String_method_uri_decode) ( ) const |
+| [String](class_string.md#class_String) | [uri_encode](class_string.md#class_String_method_uri_encode) ( ) const |
+| [String](class_string.md#class_String) | [uri_file_decode](class_string.md#class_String_method_uri_file_decode) ( ) const |
+| [String](class_string.md#class_String) | [validate_filename](class_string.md#class_String_method_validate_filename) ( ) const |
+| [String](class_string.md#class_String) | [validate_node_name](class_string.md#class_String_method_validate_node_name) ( ) const |
+| [String](class_string.md#class_String) | [xml_escape](class_string.md#class_String_method_xml_escape) ( escape_quotes: [bool](class_bool.md#class_bool) = false ) const |
+| [String](class_string.md#class_String) | [xml_unescape](class_string.md#class_String_method_xml_unescape) ( ) const |
+
+### Operators
+
+
+| [bool](class_bool.md#class_bool) | [operator !=](class_string.md#class_String_operator_neq_String) ( right: [String](class_string.md#class_String) ) |
+| --- | --- |
+| [bool](class_bool.md#class_bool) | [operator !=](class_string.md#class_String_operator_neq_StringName) ( right: [StringName](class_stringname.md#class_StringName) ) |
+| [String](class_string.md#class_String) | [operator %](class_string.md#class_String_operator_mod_Variant) ( right: [Variant](class_variant.md#class_Variant) ) |
+| [String](class_string.md#class_String) | [operator +](class_string.md#class_String_operator_sum_String) ( right: [String](class_string.md#class_String) ) |
+| [String](class_string.md#class_String) | [operator +](class_string.md#class_String_operator_sum_StringName) ( right: [StringName](class_stringname.md#class_StringName) ) |
+| [bool](class_bool.md#class_bool) | operator \ ( right: [String](class_string.md#class_String) ) |
+| [bool](class_bool.md#class_bool) | operator \ ( right: [String](class_string.md#class_String) ) |
+| [bool](class_bool.md#class_bool) | [operator ==](class_string.md#class_String_operator_eq_String) ( right: [String](class_string.md#class_String) ) |
+| [bool](class_bool.md#class_bool) | [operator ==](class_string.md#class_String_operator_eq_StringName) ( right: [StringName](class_stringname.md#class_StringName) ) |
+| [bool](class_bool.md#class_bool) | [operator >](class_string.md#class_String_operator_gt_String) ( right: [String](class_string.md#class_String) ) |
+| [bool](class_bool.md#class_bool) | [operator >=](class_string.md#class_String_operator_gte_String) ( right: [String](class_string.md#class_String) ) |
+| [String](class_string.md#class_String) | [operator []](class_string.md#class_String_operator_idx_int) ( index: [int](class_int.md#class_int) ) |
+
+---
+
+### Constructor Descriptions
+
+<span id="class_String_constructor_String"></span>
+
+[String](class_string.md#class_String) **String** ( ) [🔗](class_string.md#class_String_constructor_String)
+
+Constructs an empty **String** (`""`).
+
+---
+
+[String](class_string.md#class_String) **String** ( from: [String](class_string.md#class_String) )
+
+Constructs a **String** as a copy of the given **String**.
+
+---
+
+[String](class_string.md#class_String) **String** ( from: [NodePath](class_nodepath.md#class_NodePath) )
+
+Constructs a new **String** from the given [NodePath](class_nodepath.md#class_NodePath).
+
+---
+
+[String](class_string.md#class_String) **String** ( from: [StringName](class_stringname.md#class_StringName) )
+
+Constructs a new **String** from the given [StringName](class_stringname.md#class_StringName).
+
+---
+
+### Method Descriptions
+
+<span id="class_String_method_begins_with"></span>
+
+[bool](class_bool.md#class_bool) **begins_with** ( text: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_begins_with)
+
+Returns `true` if the string begins with the given `text`. See also [ends_with()](class_string.md#class_String_method_ends_with).
+
+---
+
+<span id="class_String_method_bigrams"></span>
+
+[PackedStringArray](class_packedstringarray.md#class_PackedStringArray) **bigrams** ( ) *const* [🔗](class_string.md#class_String_method_bigrams)
+
+Returns an array containing the bigrams (pairs of consecutive characters) of this string.
+
+::
+
+    print("Get up!".bigrams()) # Prints ["Ge", "et", "t ", " u", "up", "p!"]
+
+---
+
+<span id="class_String_method_bin_to_int"></span>
+
+[int](class_int.md#class_int) **bin_to_int** ( ) *const* [🔗](class_string.md#class_String_method_bin_to_int)
+
+Converts the string representing a binary number into an [int](class_int.md#class_int). The string may optionally be prefixed with `"0b"`, and an additional `-` prefix for negative numbers.
+
+.. tabs::
+
+```
+```
+
+    print("101".bin_to_int())   # Prints 5
+    print("0b101".bin_to_int()) # Prints 5
+    print("-0b10".bin_to_int()) # Prints -2
+
+```
+```
+
+    GD.Print("101".BinToInt());   // Prints 5
+    GD.Print("0b101".BinToInt()); // Prints 5
+    GD.Print("-0b10".BinToInt()); // Prints -2
+
+---
+
+<span id="class_String_method_c_escape"></span>
+
+[String](class_string.md#class_String) **c_escape** ( ) *const* [🔗](class_string.md#class_String_method_c_escape)
+
+Returns a copy of the string with special characters escaped using the C language standard.
+
+---
+
+<span id="class_String_method_c_unescape"></span>
+
+[String](class_string.md#class_String) **c_unescape** ( ) *const* [🔗](class_string.md#class_String_method_c_unescape)
+
+Returns a copy of the string with escaped characters replaced by their meanings. Supported escape sequences are `\'`, `\"`, `\\`, `\a`, `\b`, `\f`, `\n`, `\r`, `\t`, `\v`.
+
+ **Note:** Unlike the GDScript parser, this method doesn't support the `\uXXXX` escape sequence.
+
+---
+
+<span id="class_String_method_capitalize"></span>
+
+[String](class_string.md#class_String) **capitalize** ( ) *const* [🔗](class_string.md#class_String_method_capitalize)
+
+Returns a copy of the string with changed appearance. Replaces underscores (`_`) and hyphens (`-`) with spaces, adds spaces before uppercase letters in the middle of a word, converts all letters to lowercase, then converts the first one and each one following a space to uppercase.
+
+.. tabs::
+
+```
+```
+
+    "move_local_x".capitalize()   # Returns "Move Local X"
+    "sceneFile_path".capitalize() # Returns "Scene File Path"
+    "2D, FPS, PNG".capitalize()   # Returns "2d, Fps, Png"
+    "example-name".capitalize()   # Returns "Example Name"
+
+```
+```
+
+    "move_local_x".Capitalize();   // Returns "Move Local X"
+    "sceneFile_path".Capitalize(); // Returns "Scene File Path"
+    "2D, FPS, PNG".Capitalize();   // Returns "2d, Fps, Png"
+    "example-name".Capitalize();   // Returns "Example Name"
+
+---
+
+<span id="class_String_method_casecmp_to"></span>
+
+[int](class_int.md#class_int) **casecmp_to** ( to: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_casecmp_to)
+
+Performs a case-sensitive comparison to another string. Returns `-1` if less than, `1` if greater than, or `0` if equal. "Less than" and "greater than" are determined by the Unicode code points of each string, which roughly matches the alphabetical order.
+
+If the character comparison reaches the end of one string, but the other string contains more characters, then it will use length as the deciding factor: `1` will be returned if this string is longer than the `to` string, or `-1` if shorter. Note that the length of empty strings is always `0`.
+
+To get a [bool](class_bool.md#class_bool) result from a string comparison, use the `==` operator instead. See also [nocasecmp_to()](class_string.md#class_String_method_nocasecmp_to), [filecasecmp_to()](class_string.md#class_String_method_filecasecmp_to), and [naturalcasecmp_to()](class_string.md#class_String_method_naturalcasecmp_to).
+
+---
+
+<span id="class_String_method_chr"></span>
+
+[String](class_string.md#class_String) **chr** ( code: [int](class_int.md#class_int) ) *static* [🔗](class_string.md#class_String_method_chr)
+
+Returns a single Unicode character from the integer `code`. You may use unicodelookup.com or unicode.org as points of reference.
+
+::
+
+    print(String.chr(65))     # Prints "A"
+    print(String.chr(129302)) # Prints "🤖" (robot face emoji)
+
+See also [unicode_at()](class_string.md#class_String_method_unicode_at), @GDScript.char(), and @GDScript.ord().
+
+---
+
+<span id="class_String_method_contains"></span>
+
+[bool](class_bool.md#class_bool) **contains** ( what: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_contains)
+
+Returns `true` if the string contains `what`. In GDScript, this corresponds to the `in` operator.
+
+.. tabs::
+
+```
+```
+
+    print("Node".contains("de")) # Prints true
+    print("team".contains("I"))  # Prints false
+    print("I" in "team")         # Prints false
+
+```
+```
+
+    GD.Print("Node".Contains("de")); // Prints True
+    GD.Print("team".Contains("I"));  // Prints False
+
+If you need to know where `what` is within the string, use [find()](class_string.md#class_String_method_find). See also [containsn()](class_string.md#class_String_method_containsn).
+
+---
+
+<span id="class_String_method_containsn"></span>
+
+[bool](class_bool.md#class_bool) **containsn** ( what: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_containsn)
+
+Returns `true` if the string contains `what`, **ignoring case**.
+
+If you need to know where `what` is within the string, use [findn()](class_string.md#class_String_method_findn). See also [contains()](class_string.md#class_String_method_contains).
+
+---
+
+<span id="class_String_method_count"></span>
+
+[int](class_int.md#class_int) **count** ( what: [String](class_string.md#class_String), from: [int](class_int.md#class_int) = 0, to: [int](class_int.md#class_int) = 0 ) *const* [🔗](class_string.md#class_String_method_count)
+
+Returns the number of occurrences of the substring `what` between `from` and `to` positions. If `to` is 0, the search continues until the end of the string.
+
+---
+
+<span id="class_String_method_countn"></span>
+
+[int](class_int.md#class_int) **countn** ( what: [String](class_string.md#class_String), from: [int](class_int.md#class_int) = 0, to: [int](class_int.md#class_int) = 0 ) *const* [🔗](class_string.md#class_String_method_countn)
+
+Returns the number of occurrences of the substring `what` between `from` and `to` positions, **ignoring case**. If `to` is 0, the search continues until the end of the string.
+
+---
+
+<span id="class_String_method_dedent"></span>
+
+[String](class_string.md#class_String) **dedent** ( ) *const* [🔗](class_string.md#class_String_method_dedent)
+
+Returns a copy of the string with indentation (leading tabs and spaces) removed. See also [indent()](class_string.md#class_String_method_indent) to add indentation.
+
+---
+
+<span id="class_String_method_ends_with"></span>
+
+[bool](class_bool.md#class_bool) **ends_with** ( text: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_ends_with)
+
+Returns `true` if the string ends with the given `text`. See also [begins_with()](class_string.md#class_String_method_begins_with).
+
+---
+
+<span id="class_String_method_erase"></span>
+
+[String](class_string.md#class_String) **erase** ( position: [int](class_int.md#class_int), chars: [int](class_int.md#class_int) = 1 ) *const* [🔗](class_string.md#class_String_method_erase)
+
+Returns a string with `chars` characters erased starting from `position`. If `chars` goes beyond the string's length given the specified `position`, fewer characters will be erased from the returned string. Returns an empty string if either `position` or `chars` is negative. Returns the original string unmodified if `chars` is `0`.
+
+---
+
+<span id="class_String_method_filecasecmp_to"></span>
+
+[int](class_int.md#class_int) **filecasecmp_to** ( to: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_filecasecmp_to)
+
+Like [naturalcasecmp_to()](class_string.md#class_String_method_naturalcasecmp_to) but prioritizes strings that begin with periods (`.`) and underscores (`_`) before any other character. Useful when sorting folders or file names.
+
+To get a [bool](class_bool.md#class_bool) result from a string comparison, use the `==` operator instead. See also [filenocasecmp_to()](class_string.md#class_String_method_filenocasecmp_to), [naturalcasecmp_to()](class_string.md#class_String_method_naturalcasecmp_to), and [casecmp_to()](class_string.md#class_String_method_casecmp_to).
+
+---
+
+<span id="class_String_method_filenocasecmp_to"></span>
+
+[int](class_int.md#class_int) **filenocasecmp_to** ( to: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_filenocasecmp_to)
+
+Like [naturalnocasecmp_to()](class_string.md#class_String_method_naturalnocasecmp_to) but prioritizes strings that begin with periods (`.`) and underscores (`_`) before any other character. Useful when sorting folders or file names.
+
+To get a [bool](class_bool.md#class_bool) result from a string comparison, use the `==` operator instead. See also [filecasecmp_to()](class_string.md#class_String_method_filecasecmp_to), [naturalnocasecmp_to()](class_string.md#class_String_method_naturalnocasecmp_to), and [nocasecmp_to()](class_string.md#class_String_method_nocasecmp_to).
+
+---
+
+<span id="class_String_method_find"></span>
+
+[int](class_int.md#class_int) **find** ( what: [String](class_string.md#class_String), from: [int](class_int.md#class_int) = 0 ) *const* [🔗](class_string.md#class_String_method_find)
+
+Returns the index of the **first** occurrence of `what` in this string, or `-1` if there are none. The search's start can be specified with `from`, continuing to the end of the string.
+
+.. tabs::
+
+```
+```
+
+    print("Team".find("I")) # Prints -1
+
+    print("Potato".find("t"))    # Prints 2
+    print("Potato".find("t", 3)) # Prints 4
+    print("Potato".find("t", 5)) # Prints -1
+
+```
+```
+
+    GD.Print("Team".Find("I")); // Prints -1
+
+    GD.Print("Potato".Find("t"));    // Prints 2
+    GD.Print("Potato".Find("t", 3)); // Prints 4
+    GD.Print("Potato".Find("t", 5)); // Prints -1
+
+ **Note:** If you just want to know whether the string contains `what`, use [contains()](class_string.md#class_String_method_contains). In GDScript, you may also use the `in` operator.
+
+ **Note:** A negative value of `from` is converted to a starting index by counting back from the last possible index with enough space to find `what`.
+
+---
+
+<span id="class_String_method_findn"></span>
+
+[int](class_int.md#class_int) **findn** ( what: [String](class_string.md#class_String), from: [int](class_int.md#class_int) = 0 ) *const* [🔗](class_string.md#class_String_method_findn)
+
+Returns the index of the **first** **case-insensitive** occurrence of `what` in this string, or `-1` if there are none. The starting search index can be specified with `from`, continuing to the end of the string.
+
+---
+
+<span id="class_String_method_format"></span>
+
+[String](class_string.md#class_String) **format** ( values: [Variant](class_variant.md#class_Variant), placeholder: [String](class_string.md#class_String) = "{_}" ) *const* [🔗](class_string.md#class_String_method_format)
+
+Formats the string by replacing all occurrences of `placeholder` with the elements of `values`.
+
+ `values` can be a [Dictionary](class_dictionary.md#class_Dictionary), an [Array](class_array.md#class_Array), or an [Object](class_object.md#class_Object). Any underscores in `placeholder` will be replaced with the corresponding keys in advance. Array elements use their index as keys.
+
+::
+
+    # Prints "Waiting for Godot is a play by Samuel Beckett, and Godot Engine is named after it."
+    var use_array_values = "Waiting for {0} is a play by {1}, and {0} Engine is named after it."
+    print(use_array_values.format(["Godot", "Samuel Beckett"]))
+
+    # Prints "User 42 is Godot."
+    print("User {id} is {name}.".format({"id": 42, "name": "Godot"}))
+
+Some additional handling is performed when `values` is an [Array](class_array.md#class_Array). If `placeholder` does not contain an underscore, the elements of the `values` array will be used to replace one occurrence of the placeholder in order; If an element of `values` is another 2-element array, it'll be interpreted as a key-value pair.
+
+::
+
+    # Prints "User 42 is Godot."
+    print("User {} is {}.".format([42, "Godot"], "{}"))
+    print("User {id} is {name}.".format([["id", 42], ["name", "Godot"]]))
+
+When passing an [Object](class_object.md#class_Object), the property names from [Object.get_property_list()](class_object.md#class_Object_method_get_property_list) are used as keys.
+
+::
+
+    # Prints "Visible true, position (0, 0)"
+    var node = Node2D.new()
+    print("Visible {visible}, position {position}".format(node))
+
+See also the [GDScript format string](../tutorials/scripting/gdscript/gdscript_format_string.md) tutorial.
+
+ **Note:** Each replacement is done sequentially for each element of `values`, **not** all at once. This means that if any element is inserted and it contains another placeholder, it may be changed by the next replacement. While this can be very useful, it often causes unexpected results. If not necessary, make sure `values`'s elements do not contain placeholders.
+
+::
+
+    print("{0} {1}".format(["{1}", "x"]))           # Prints "x x"
+    print("{0} {1}".format(["x", "{0}"]))           # Prints "x {0}"
+    print("{a} {b}".format({"a": "{b}", "b": "c"})) # Prints "c c"
+    print("{a} {b}".format({"b": "c", "a": "{b}"})) # Prints "{b} c"
+
+ **Note:** In C#, it's recommended to interpolate strings with "$", instead.
+
+---
+
+<span id="class_String_method_get_base_dir"></span>
+
+[String](class_string.md#class_String) **get_base_dir** ( ) *const* [🔗](class_string.md#class_String_method_get_base_dir)
+
+If the string is a valid file path, returns the base directory name.
+
+::
+
+    var dir_path = "/path/to/file.txt".get_base_dir() # dir_path is "/path/to"
+
+---
+
+<span id="class_String_method_get_basename"></span>
+
+[String](class_string.md#class_String) **get_basename** ( ) *const* [🔗](class_string.md#class_String_method_get_basename)
+
+If the string is a valid file path, returns the full file path, without the extension.
+
+::
+
+    var base = "/path/to/file.txt".get_basename() # base is "/path/to/file"
+
+---
+
+<span id="class_String_method_get_extension"></span>
+
+[String](class_string.md#class_String) **get_extension** ( ) *const* [🔗](class_string.md#class_String_method_get_extension)
+
+If the string is a valid file name or path, returns the file extension without the leading period (`.`). Otherwise, returns an empty string.
+
+::
+
+    var a = "/path/to/file.txt".get_extension() # a is "txt"
+    var b = "cool.txt".get_extension()          # b is "txt"
+    var c = "cool.font.tres".get_extension()    # c is "tres"
+    var d = ".pack1".get_extension()            # d is "pack1"
+
+    var e = "file.txt.".get_extension()  # e is ""
+    var f = "file.txt..".get_extension() # f is ""
+    var g = "txt".get_extension()        # g is ""
+    var h = "".get_extension()           # h is ""
+
+---
+
+<span id="class_String_method_get_file"></span>
+
+[String](class_string.md#class_String) **get_file** ( ) *const* [🔗](class_string.md#class_String_method_get_file)
+
+If the string is a valid file path, returns the file name, including the extension.
+
+::
+
+    var file = "/path/to/icon.png".get_file() # file is "icon.png"
+
+---
+
+<span id="class_String_method_get_slice"></span>
+
+[String](class_string.md#class_String) **get_slice** ( delimiter: [String](class_string.md#class_String), slice: [int](class_int.md#class_int) ) *const* [🔗](class_string.md#class_String_method_get_slice)
+
+Splits the string using a `delimiter` and returns the substring at index `slice`. Returns the original string if `delimiter` does not occur in the string. Returns an empty string if the `slice` does not exist.
+
+This is faster than [split()](class_string.md#class_String_method_split), if you only need one or two substrings.
+
+::
+
+    print("i/am/example/hi".get_slice("/", 2)) # Prints "example"
+
+---
+
+<span id="class_String_method_get_slice_count"></span>
+
+[int](class_int.md#class_int) **get_slice_count** ( delimiter: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_get_slice_count)
+
+Returns the total number of slices when the string is split with the given `delimiter` (see [split()](class_string.md#class_String_method_split)).
+
+Use [get_slice()](class_string.md#class_String_method_get_slice) to extract a specific slice.
+
+::
+
+    print("i/am/example/string".get_slice_count("/")) # Prints '4'.
+    print("i am example string".get_slice_count("/")) # Prints '1'.
+
+---
+
+<span id="class_String_method_get_slicec"></span>
+
+[String](class_string.md#class_String) **get_slicec** ( delimiter: [int](class_int.md#class_int), slice: [int](class_int.md#class_int) ) *const* [🔗](class_string.md#class_String_method_get_slicec)
+
+Splits the string using a Unicode character with code `delimiter` and returns the substring at index `slice`. Returns an empty string if the `slice` does not exist.
+
+This is faster than [split()](class_string.md#class_String_method_split), if you only need one or two substrings.
+
+This is a Unicode version of [get_slice()](class_string.md#class_String_method_get_slice).
+
+---
+
+<span id="class_String_method_hash"></span>
+
+[int](class_int.md#class_int) **hash** ( ) *const* [🔗](class_string.md#class_String_method_hash)
+
+Returns the 32-bit hash value representing the string's contents.
+
+ **Note:** Strings with equal hash values are *not* guaranteed to be the same, as a result of hash collisions. On the contrary, strings with different hash values are guaranteed to be different.
+
+---
+
+<span id="class_String_method_hex_decode"></span>
+
+[PackedByteArray](class_packedbytearray.md#class_PackedByteArray) **hex_decode** ( ) *const* [🔗](class_string.md#class_String_method_hex_decode)
+
+Decodes a hexadecimal string as a [PackedByteArray](class_packedbytearray.md#class_PackedByteArray).
+
+.. tabs::
+
+```
+```
+
+    var text = "hello world"
+    var encoded = text.to_utf8_buffer().hex_encode() # outputs "68656c6c6f20776f726c64"
+    print(encoded.hex_decode().get_string_from_utf8())
+
+```
+```
+
+    var text = "hello world";
+    var encoded = text.ToUtf8Buffer().HexEncode(); // outputs "68656c6c6f20776f726c64"
+    GD.Print(encoded.HexDecode().GetStringFromUtf8());
+
+---
+
+<span id="class_String_method_hex_to_int"></span>
+
+[int](class_int.md#class_int) **hex_to_int** ( ) *const* [🔗](class_string.md#class_String_method_hex_to_int)
+
+Converts the string representing a hexadecimal number into an [int](class_int.md#class_int). The string may be optionally prefixed with `"0x"`, and an additional `-` prefix for negative numbers.
+
+.. tabs::
+
+```
+```
+
+    print("0xff".hex_to_int()) # Prints 255
+    print("ab".hex_to_int())   # Prints 171
+
+```
+```
+
+    GD.Print("0xff".HexToInt()); // Prints 255
+    GD.Print("ab".HexToInt());   // Prints 171
+
+---
+
+<span id="class_String_method_humanize_size"></span>
+
+[String](class_string.md#class_String) **humanize_size** ( size: [int](class_int.md#class_int) ) *static* [🔗](class_string.md#class_String_method_humanize_size)
+
+Converts `size` which represents a number of bytes into a human-readable form.
+
+The result is in IEC prefix format, which may end in either `"B"`, `"KiB"`, `"MiB"`, `"GiB"`, `"TiB"`, `"PiB"`, or `"EiB"`.
+
+---
+
+<span id="class_String_method_indent"></span>
+
+[String](class_string.md#class_String) **indent** ( prefix: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_indent)
+
+Indents every line of the string with the given `prefix`. Empty lines are not indented. See also [dedent()](class_string.md#class_String_method_dedent) to remove indentation.
+
+For example, the string can be indented with two tabulations using `"\t\t"`, or four spaces using `"    "`.
+
+---
+
+<span id="class_String_method_insert"></span>
+
+[String](class_string.md#class_String) **insert** ( position: [int](class_int.md#class_int), what: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_insert)
+
+Inserts `what` at the given `position` in the string.
+
+---
+
+<span id="class_String_method_is_absolute_path"></span>
+
+[bool](class_bool.md#class_bool) **is_absolute_path** ( ) *const* [🔗](class_string.md#class_String_method_is_absolute_path)
+
+Returns `true` if the string is a path to a file or directory, and its starting point is explicitly defined. This method is the opposite of [is_relative_path()](class_string.md#class_String_method_is_relative_path).
+
+This includes all paths starting with `"res://"`, `"user://"`, `"C:\"`, `"/"`, etc.
+
+---
+
+<span id="class_String_method_is_empty"></span>
+
+[bool](class_bool.md#class_bool) **is_empty** ( ) *const* [🔗](class_string.md#class_String_method_is_empty)
+
+Returns `true` if the string's length is `0` (`""`). See also [length()](class_string.md#class_String_method_length).
+
+---
+
+<span id="class_String_method_is_relative_path"></span>
+
+[bool](class_bool.md#class_bool) **is_relative_path** ( ) *const* [🔗](class_string.md#class_String_method_is_relative_path)
+
+Returns `true` if the string is a path, and its starting point is dependent on context. The path could begin from the current directory, or the current [Node](class_node.md#class_Node) (if the string is derived from a [NodePath](class_nodepath.md#class_NodePath)), and may sometimes be prefixed with `"./"`. This method is the opposite of [is_absolute_path()](class_string.md#class_String_method_is_absolute_path).
+
+---
+
+<span id="class_String_method_is_subsequence_of"></span>
+
+[bool](class_bool.md#class_bool) **is_subsequence_of** ( text: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_is_subsequence_of)
+
+Returns `true` if all characters of this string can be found in `text` in their original order. This is not the same as [contains()](class_string.md#class_String_method_contains).
+
+::
+
+    var text = "Wow, incredible!"
+
+    print("inedible".is_subsequence_of(text)) # Prints true
+    print("Word!".is_subsequence_of(text))    # Prints true
+    print("Window".is_subsequence_of(text))   # Prints false
+    print("".is_subsequence_of(text))         # Prints true
+
+---
+
+<span id="class_String_method_is_subsequence_ofn"></span>
+
+[bool](class_bool.md#class_bool) **is_subsequence_ofn** ( text: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_is_subsequence_ofn)
+
+Returns `true` if all characters of this string can be found in `text` in their original order, **ignoring case**. This is not the same as [containsn()](class_string.md#class_String_method_containsn).
+
+---
+
+<span id="class_String_method_is_valid_ascii_identifier"></span>
+
+[bool](class_bool.md#class_bool) **is_valid_ascii_identifier** ( ) *const* [🔗](class_string.md#class_String_method_is_valid_ascii_identifier)
+
+Returns `true` if this string is a valid ASCII identifier. A valid ASCII identifier may contain only letters, digits, and underscores (`_`), and the first character may not be a digit.
+
+::
+
+    print("node_2d".is_valid_ascii_identifier())    # Prints true
+    print("TYPE_FLOAT".is_valid_ascii_identifier()) # Prints true
+    print("1st_method".is_valid_ascii_identifier()) # Prints false
+    print("MyMethod#2".is_valid_ascii_identifier()) # Prints false
+
+See also [is_valid_unicode_identifier()](class_string.md#class_String_method_is_valid_unicode_identifier).
+
+---
+
+<span id="class_String_method_is_valid_filename"></span>
+
+[bool](class_bool.md#class_bool) **is_valid_filename** ( ) *const* [🔗](class_string.md#class_String_method_is_valid_filename)
+
+Returns `true` if this string is a valid file name. A valid file name cannot be empty, begin or end with space characters, or contain characters that are not allowed (`:` `/` `\` `?` `*` `"` `|` `%` `<` `>`).
+
+---
+
+<span id="class_String_method_is_valid_float"></span>
+
+[bool](class_bool.md#class_bool) **is_valid_float** ( ) *const* [🔗](class_string.md#class_String_method_is_valid_float)
+
+Returns `true` if this string represents a valid floating-point number. A valid float may contain only digits, one decimal point (`.`), and the exponent letter (`e`). It may also be prefixed with a positive (`+`) or negative (`-`) sign. Any valid integer is also a valid float (see [is_valid_int()](class_string.md#class_String_method_is_valid_int)). See also [to_float()](class_string.md#class_String_method_to_float).
+
+::
+
+    print("1.7".is_valid_float())   # Prints true
+    print("24".is_valid_float())    # Prints true
+    print("7e3".is_valid_float())   # Prints true
+    print("Hello".is_valid_float()) # Prints false
+
+---
+
+<span id="class_String_method_is_valid_hex_number"></span>
+
+[bool](class_bool.md#class_bool) **is_valid_hex_number** ( with_prefix: [bool](class_bool.md#class_bool) = false ) *const* [🔗](class_string.md#class_String_method_is_valid_hex_number)
+
+Returns `true` if this string is a valid hexadecimal number. A valid hexadecimal number only contains digits or letters `A` to `F` (either uppercase or lowercase), and may be prefixed with a positive (`+`) or negative (`-`) sign.
+
+If `with_prefix` is `true`, the hexadecimal number needs to prefixed by `"0x"` to be considered valid.
+
+::
+
+    print("A08E".is_valid_hex_number())    # Prints true
+    print("-AbCdEf".is_valid_hex_number()) # Prints true
+    print("2.5".is_valid_hex_number())     # Prints false
+
+    print("0xDEADC0DE".is_valid_hex_number(true)) # Prints true
+
+---
+
+<span id="class_String_method_is_valid_html_color"></span>
+
+[bool](class_bool.md#class_bool) **is_valid_html_color** ( ) *const* [🔗](class_string.md#class_String_method_is_valid_html_color)
+
+Returns `true` if this string is a valid color in hexadecimal HTML notation. The string must be a hexadecimal value (see [is_valid_hex_number()](class_string.md#class_String_method_is_valid_hex_number)) of either 3, 4, 6 or 8 digits, and may be prefixed by a hash sign (`#`). Other HTML notations for colors, such as names or `hsl()`, are not considered valid. See also [Color.html()](class_color.md#class_Color_method_html).
+
+---
+
+<span id="class_String_method_is_valid_identifier"></span>
+
+[bool](class_bool.md#class_bool) **is_valid_identifier** ( ) *const* [🔗](class_string.md#class_String_method_is_valid_identifier)
+
+**Deprecated:** Use [is_valid_ascii_identifier()](class_string.md#class_String_method_is_valid_ascii_identifier) instead.
+
+Returns `true` if this string is a valid identifier. A valid identifier may contain only letters, digits and underscores (`_`), and the first character may not be a digit.
+
+::
+
+    print("node_2d".is_valid_identifier())    # Prints true
+    print("TYPE_FLOAT".is_valid_identifier()) # Prints true
+    print("1st_method".is_valid_identifier()) # Prints false
+    print("MyMethod#2".is_valid_identifier()) # Prints false
+
+---
+
+<span id="class_String_method_is_valid_int"></span>
+
+[bool](class_bool.md#class_bool) **is_valid_int** ( ) *const* [🔗](class_string.md#class_String_method_is_valid_int)
+
+Returns `true` if this string represents a valid integer. A valid integer only contains digits, and may be prefixed with a positive (`+`) or negative (`-`) sign. See also [to_int()](class_string.md#class_String_method_to_int).
+
+::
+
+    print("7".is_valid_int())    # Prints true
+    print("1.65".is_valid_int()) # Prints false
+    print("Hi".is_valid_int())   # Prints false
+    print("+3".is_valid_int())   # Prints true
+    print("-12".is_valid_int())  # Prints true
+
+---
+
+<span id="class_String_method_is_valid_ip_address"></span>
+
+[bool](class_bool.md#class_bool) **is_valid_ip_address** ( ) *const* [🔗](class_string.md#class_String_method_is_valid_ip_address)
+
+Returns `true` if this string represents a well-formatted IPv4 or IPv6 address. This method considers reserved IP addresses such as `"0.0.0.0"` and `"ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"` as valid.
+
+---
+
+<span id="class_String_method_is_valid_unicode_identifier"></span>
+
+[bool](class_bool.md#class_bool) **is_valid_unicode_identifier** ( ) *const* [🔗](class_string.md#class_String_method_is_valid_unicode_identifier)
+
+Returns `true` if this string is a valid Unicode identifier.
+
+A valid Unicode identifier must begin with a Unicode character of class `XID_Start` or `"_"`, and may contain Unicode characters of class `XID_Continue` in the other positions.
+
+::
+
+    print("node_2d".is_valid_unicode_identifier())      # Prints true
+    print("1st_method".is_valid_unicode_identifier())   # Prints false
+    print("MyMethod#2".is_valid_unicode_identifier())   # Prints false
+    print("állóképesség".is_valid_unicode_identifier()) # Prints true
+    print("выносливость".is_valid_unicode_identifier()) # Prints true
+    print("体力".is_valid_unicode_identifier())         # Prints true
+
+See also [is_valid_ascii_identifier()](class_string.md#class_String_method_is_valid_ascii_identifier).
+
+ **Note:** This method checks identifiers the same way as GDScript. See [TextServer.is_valid_identifier()](class_textserver.md#class_TextServer_method_is_valid_identifier) for more advanced checks.
+
+---
+
+<span id="class_String_method_join"></span>
+
+[String](class_string.md#class_String) **join** ( parts: [PackedStringArray](class_packedstringarray.md#class_PackedStringArray) ) *const* [🔗](class_string.md#class_String_method_join)
+
+Returns the concatenation of `parts`' elements, with each element separated by the string calling this method. This method is the opposite of [split()](class_string.md#class_String_method_split).
+
+.. tabs::
+
+```
+```
+
+    var fruits = ["Apple", "Orange", "Pear", "Kiwi"]
+
+    print(", ".join(fruits))  # Prints "Apple, Orange, Pear, Kiwi"
+    print("---".join(fruits)) # Prints "Apple---Orange---Pear---Kiwi"
+
+```
+```
+
+    string[] fruits = ["Apple", "Orange", "Pear", "Kiwi"];
+
+    // In C#, this method is static.
+    GD.Print(string.Join(", ", fruits));  // Prints "Apple, Orange, Pear, Kiwi"
+    GD.Print(string.Join("---", fruits)); // Prints "Apple---Orange---Pear---Kiwi"
+
+---
+
+<span id="class_String_method_json_escape"></span>
+
+[String](class_string.md#class_String) **json_escape** ( ) *const* [🔗](class_string.md#class_String_method_json_escape)
+
+Returns a copy of the string with special characters escaped using the JSON standard. Because it closely matches the C standard, it is possible to use [c_unescape()](class_string.md#class_String_method_c_unescape) to unescape the string, if necessary.
+
+---
+
+<span id="class_String_method_left"></span>
+
+[String](class_string.md#class_String) **left** ( length: [int](class_int.md#class_int) ) *const* [🔗](class_string.md#class_String_method_left)
+
+Returns the first `length` characters from the beginning of the string. If `length` is negative, strips the last `length` characters from the string's end.
+
+::
+
+    print("Hello World!".left(3))  # Prints "Hel"
+    print("Hello World!".left(-4)) # Prints "Hello Wo"
+
+---
+
+<span id="class_String_method_length"></span>
+
+[int](class_int.md#class_int) **length** ( ) *const* [🔗](class_string.md#class_String_method_length)
+
+Returns the number of characters in the string. Empty strings (`""`) always return `0`. See also [is_empty()](class_string.md#class_String_method_is_empty).
+
+---
+
+<span id="class_String_method_lpad"></span>
+
+[String](class_string.md#class_String) **lpad** ( min_length: [int](class_int.md#class_int), character: [String](class_string.md#class_String) = " " ) *const* [🔗](class_string.md#class_String_method_lpad)
+
+Formats the string to be at least `min_length` long by adding `character` s to the left of the string, if necessary. See also [rpad()](class_string.md#class_String_method_rpad).
+
+---
+
+<span id="class_String_method_lstrip"></span>
+
+[String](class_string.md#class_String) **lstrip** ( chars: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_lstrip)
+
+Removes a set of characters defined in `chars` from the string's beginning. See also [rstrip()](class_string.md#class_String_method_rstrip).
+
+ **Note:** `chars` is not a prefix. Use [trim_prefix()](class_string.md#class_String_method_trim_prefix) to remove a single prefix, rather than a set of characters.
+
+---
+
+<span id="class_String_method_match"></span>
+
+[bool](class_bool.md#class_bool) **match** ( expr: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_match)
+
+Does a simple expression match (also called "glob" or "globbing"), where `*` matches zero or more arbitrary characters and `?` matches any single character except a period (`.`). An empty string or empty expression always evaluates to `false`.
+
+---
+
+<span id="class_String_method_matchn"></span>
+
+[bool](class_bool.md#class_bool) **matchn** ( expr: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_matchn)
+
+Does a simple **case-insensitive** expression match, where `*` matches zero or more arbitrary characters and `?` matches any single character except a period (`.`). An empty string or empty expression always evaluates to `false`.
+
+---
+
+<span id="class_String_method_md5_buffer"></span>
+
+[PackedByteArray](class_packedbytearray.md#class_PackedByteArray) **md5_buffer** ( ) *const* [🔗](class_string.md#class_String_method_md5_buffer)
+
+Returns the MD5 hash of the string as a [PackedByteArray](class_packedbytearray.md#class_PackedByteArray).
+
+---
+
+<span id="class_String_method_md5_text"></span>
+
+[String](class_string.md#class_String) **md5_text** ( ) *const* [🔗](class_string.md#class_String_method_md5_text)
+
+Returns the MD5 hash of the string as another **String**.
+
+---
+
+<span id="class_String_method_naturalcasecmp_to"></span>
+
+[int](class_int.md#class_int) **naturalcasecmp_to** ( to: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_naturalcasecmp_to)
+
+Performs a **case-sensitive**, *natural order* comparison to another string. Returns `-1` if less than, `1` if greater than, or `0` if equal. "Less than" or "greater than" are determined by the Unicode code points of each string, which roughly matches the alphabetical order.
+
+When used for sorting, natural order comparison orders sequences of numbers by the combined value of each digit as is often expected, instead of the single digit's value. A sorted sequence of numbered strings will be `["1", "2", "3", ...]`, not `["1", "10", "2", "3", ...]`.
+
+If the character comparison reaches the end of one string, but the other string contains more characters, then it will use length as the deciding factor: `1` will be returned if this string is longer than the `to` string, or `-1` if shorter. Note that the length of empty strings is always `0`.
+
+To get a [bool](class_bool.md#class_bool) result from a string comparison, use the `==` operator instead. See also [naturalnocasecmp_to()](class_string.md#class_String_method_naturalnocasecmp_to), [filecasecmp_to()](class_string.md#class_String_method_filecasecmp_to), and [nocasecmp_to()](class_string.md#class_String_method_nocasecmp_to).
+
+---
+
+<span id="class_String_method_naturalnocasecmp_to"></span>
+
+[int](class_int.md#class_int) **naturalnocasecmp_to** ( to: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_naturalnocasecmp_to)
+
+Performs a **case-insensitive**, *natural order* comparison to another string. Returns `-1` if less than, `1` if greater than, or `0` if equal. "Less than" or "greater than" are determined by the Unicode code points of each string, which roughly matches the alphabetical order. Internally, lowercase characters are converted to uppercase for the comparison.
+
+When used for sorting, natural order comparison orders sequences of numbers by the combined value of each digit as is often expected, instead of the single digit's value. A sorted sequence of numbered strings will be `["1", "2", "3", ...]`, not `["1", "10", "2", "3", ...]`.
+
+If the character comparison reaches the end of one string, but the other string contains more characters, then it will use length as the deciding factor: `1` will be returned if this string is longer than the `to` string, or `-1` if shorter. Note that the length of empty strings is always `0`.
+
+To get a [bool](class_bool.md#class_bool) result from a string comparison, use the `==` operator instead. See also [naturalcasecmp_to()](class_string.md#class_String_method_naturalcasecmp_to), [filenocasecmp_to()](class_string.md#class_String_method_filenocasecmp_to), and [casecmp_to()](class_string.md#class_String_method_casecmp_to).
+
+---
+
+<span id="class_String_method_nocasecmp_to"></span>
+
+[int](class_int.md#class_int) **nocasecmp_to** ( to: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_nocasecmp_to)
+
+Performs a **case-insensitive** comparison to another string. Returns `-1` if less than, `1` if greater than, or `0` if equal. "Less than" or "greater than" are determined by the Unicode code points of each string, which roughly matches the alphabetical order. Internally, lowercase characters are converted to uppercase for the comparison.
+
+If the character comparison reaches the end of one string, but the other string contains more characters, then it will use length as the deciding factor: `1` will be returned if this string is longer than the `to` string, or `-1` if shorter. Note that the length of empty strings is always `0`.
+
+To get a [bool](class_bool.md#class_bool) result from a string comparison, use the `==` operator instead. See also [casecmp_to()](class_string.md#class_String_method_casecmp_to), [filenocasecmp_to()](class_string.md#class_String_method_filenocasecmp_to), and [naturalnocasecmp_to()](class_string.md#class_String_method_naturalnocasecmp_to).
+
+---
+
+<span id="class_String_method_num"></span>
+
+[String](class_string.md#class_String) **num** ( number: [float](class_float.md#class_float), decimals: [int](class_int.md#class_int) = -1 ) *static* [🔗](class_string.md#class_String_method_num)
+
+Converts a [float](class_float.md#class_float) to a string representation of a decimal number, with the number of decimal places specified in `decimals`.
+
+If `decimals` is `-1` as by default, the string representation may only have up to 14 significant digits, with digits before the decimal point having priority over digits after.
+
+Trailing zeros are not included in the string. The last digit is rounded, not truncated.
+
+::
+
+    String.num(3.141593)     # Returns "3.141593"
+    String.num(3.141593, 3)  # Returns "3.142"
+    String.num(3.14159300)   # Returns "3.141593"
+
+    # Here, the last digit will be rounded up,
+    # which reduces the total digit count, since trailing zeros are removed:
+    String.num(42.129999, 5) # Returns "42.13"
+
+    # If `decimals` is not specified, the maximum number of significant digits is 14:
+    String.num(-0.0000012345432123454321)     # Returns "-0.00000123454321"
+    String.num(-10000.0000012345432123454321) # Returns "-10000.0000012345"
+
+---
+
+<span id="class_String_method_num_int64"></span>
+
+[String](class_string.md#class_String) **num_int64** ( number: [int](class_int.md#class_int), base: [int](class_int.md#class_int) = 10, capitalize_hex: [bool](class_bool.md#class_bool) = false ) *static* [🔗](class_string.md#class_String_method_num_int64)
+
+Converts the given `number` to a string representation, with the given `base`.
+
+By default, `base` is set to decimal (`10`). Other common bases in programming include binary (`2`), octal (`8`), hexadecimal (`16`).
+
+If `capitalize_hex` is `true`, digits higher than 9 are represented in uppercase.
+
+---
+
+<span id="class_String_method_num_scientific"></span>
+
+[String](class_string.md#class_String) **num_scientific** ( number: [float](class_float.md#class_float) ) *static* [🔗](class_string.md#class_String_method_num_scientific)
+
+Converts the given `number` to a string representation, in scientific notation.
+
+.. tabs::
+
+```
+```
+
+    var n = -5.2e8
+    print(n)                        # Prints -520000000
+    print(String.num_scientific(n)) # Prints -5.2e+08
+
+```
+```
+
+    // This method is not implemented in C#.
+    // Use `string.ToString()` with "e" to achieve similar results.
+    var n = -5.2e8f;
+    GD.Print(n);                // Prints -520000000
+    GD.Print(n.ToString("e1")); // Prints -5.2e+008
+
+ **Note:** In C#, this method is not implemented. To achieve similar results, see C#'s Standard numeric format strings.
+
+---
+
+<span id="class_String_method_num_uint64"></span>
+
+[String](class_string.md#class_String) **num_uint64** ( number: [int](class_int.md#class_int), base: [int](class_int.md#class_int) = 10, capitalize_hex: [bool](class_bool.md#class_bool) = false ) *static* [🔗](class_string.md#class_String_method_num_uint64)
+
+Converts the given unsigned [int](class_int.md#class_int) to a string representation, with the given `base`.
+
+By default, `base` is set to decimal (`10`). Other common bases in programming include binary (`2`), octal (`8`), hexadecimal (`16`).
+
+If `capitalize_hex` is `true`, digits higher than 9 are represented in uppercase.
+
+---
+
+<span id="class_String_method_pad_decimals"></span>
+
+[String](class_string.md#class_String) **pad_decimals** ( digits: [int](class_int.md#class_int) ) *const* [🔗](class_string.md#class_String_method_pad_decimals)
+
+Formats the string representing a number to have an exact number of `digits` *after* the decimal point.
+
+---
+
+<span id="class_String_method_pad_zeros"></span>
+
+[String](class_string.md#class_String) **pad_zeros** ( digits: [int](class_int.md#class_int) ) *const* [🔗](class_string.md#class_String_method_pad_zeros)
+
+Formats the string representing a number to have an exact number of `digits` *before* the decimal point.
+
+---
+
+<span id="class_String_method_path_join"></span>
+
+[String](class_string.md#class_String) **path_join** ( path: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_path_join)
+
+Concatenates `path` at the end of the string as a subpath, adding `/` if necessary.
+
+ **Example:** `"this/is".path_join("path") == "this/is/path"`.
+
+---
+
+<span id="class_String_method_remove_char"></span>
+
+[String](class_string.md#class_String) **remove_char** ( what: [int](class_int.md#class_int) ) *const* [🔗](class_string.md#class_String_method_remove_char)
+
+Removes all occurrences of the Unicode character with code `what`. Faster version of [replace()](class_string.md#class_String_method_replace) when the key is only one character long and the replacement is `""`.
+
+---
+
+<span id="class_String_method_remove_chars"></span>
+
+[String](class_string.md#class_String) **remove_chars** ( chars: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_remove_chars)
+
+Removes all occurrences of the characters in `chars`. See also [remove_char()](class_string.md#class_String_method_remove_char).
+
+---
+
+<span id="class_String_method_repeat"></span>
+
+[String](class_string.md#class_String) **repeat** ( count: [int](class_int.md#class_int) ) *const* [🔗](class_string.md#class_String_method_repeat)
+
+Repeats this string a number of times. `count` needs to be greater than `0`. Otherwise, returns an empty string.
+
+---
+
+<span id="class_String_method_replace"></span>
+
+[String](class_string.md#class_String) **replace** ( what: [String](class_string.md#class_String), forwhat: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_replace)
+
+Replaces all occurrences of `what` inside the string with the given `forwhat`.
+
+---
+
+<span id="class_String_method_replace_char"></span>
+
+[String](class_string.md#class_String) **replace_char** ( key: [int](class_int.md#class_int), with: [int](class_int.md#class_int) ) *const* [🔗](class_string.md#class_String_method_replace_char)
+
+Replaces all occurrences of the Unicode character with code `key` with the Unicode character with code `with`. Faster version of [replace()](class_string.md#class_String_method_replace) when the key is only one character long. To get a single character use `"X".unicode_at(0)` (note that some strings, like compound letters and emoji, can be composed of multiple unicode codepoints, and will not work with this method, use [length()](class_string.md#class_String_method_length) to make sure).
+
+---
+
+<span id="class_String_method_replace_chars"></span>
+
+[String](class_string.md#class_String) **replace_chars** ( keys: [String](class_string.md#class_String), with: [int](class_int.md#class_int) ) *const* [🔗](class_string.md#class_String_method_replace_chars)
+
+Replaces any occurrence of the characters in `keys` with the Unicode character with code `with`. See also [replace_char()](class_string.md#class_String_method_replace_char).
+
+---
+
+<span id="class_String_method_replacen"></span>
+
+[String](class_string.md#class_String) **replacen** ( what: [String](class_string.md#class_String), forwhat: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_replacen)
+
+Replaces all **case-insensitive** occurrences of `what` inside the string with the given `forwhat`.
+
+---
+
+<span id="class_String_method_reverse"></span>
+
+[String](class_string.md#class_String) **reverse** ( ) *const* [🔗](class_string.md#class_String_method_reverse)
+
+Returns the copy of this string in reverse order. This operation works on unicode codepoints, rather than sequences of codepoints, and may break things like compound letters or emojis.
+
+---
+
+<span id="class_String_method_rfind"></span>
+
+[int](class_int.md#class_int) **rfind** ( what: [String](class_string.md#class_String), from: [int](class_int.md#class_int) = -1 ) *const* [🔗](class_string.md#class_String_method_rfind)
+
+Returns the index of the **last** occurrence of `what` in this string, or `-1` if there are none. The search's start can be specified with `from`, continuing to the beginning of the string. This method is the reverse of [find()](class_string.md#class_String_method_find).
+
+ **Note:** A negative value of `from` is converted to a starting index by counting back from the last possible index with enough space to find `what`.
+
+ **Note:** A value of `from` that is greater than the last possible index with enough space to find `what` is considered out-of-bounds, and returns `-1`.
+
+---
+
+<span id="class_String_method_rfindn"></span>
+
+[int](class_int.md#class_int) **rfindn** ( what: [String](class_string.md#class_String), from: [int](class_int.md#class_int) = -1 ) *const* [🔗](class_string.md#class_String_method_rfindn)
+
+Returns the index of the **last** **case-insensitive** occurrence of `what` in this string, or `-1` if there are none. The starting search index can be specified with `from`, continuing to the beginning of the string. This method is the reverse of [findn()](class_string.md#class_String_method_findn).
+
+---
+
+<span id="class_String_method_right"></span>
+
+[String](class_string.md#class_String) **right** ( length: [int](class_int.md#class_int) ) *const* [🔗](class_string.md#class_String_method_right)
+
+Returns the last `length` characters from the end of the string. If `length` is negative, strips the first `length` characters from the string's beginning.
+
+::
+
+    print("Hello World!".right(3))  # Prints "ld!"
+    print("Hello World!".right(-4)) # Prints "o World!"
+
+---
+
+<span id="class_String_method_rpad"></span>
+
+[String](class_string.md#class_String) **rpad** ( min_length: [int](class_int.md#class_int), character: [String](class_string.md#class_String) = " " ) *const* [🔗](class_string.md#class_String_method_rpad)
+
+Formats the string to be at least `min_length` long, by adding `character` s to the right of the string, if necessary. See also [lpad()](class_string.md#class_String_method_lpad).
+
+---
+
+<span id="class_String_method_rsplit"></span>
+
+[PackedStringArray](class_packedstringarray.md#class_PackedStringArray) **rsplit** ( delimiter: [String](class_string.md#class_String) = "", allow_empty: [bool](class_bool.md#class_bool) = true, maxsplit: [int](class_int.md#class_int) = 0 ) *const* [🔗](class_string.md#class_String_method_rsplit)
+
+Splits the string using a `delimiter` and returns an array of the substrings, starting from the end of the string. The splits in the returned array appear in the same order as the original string. If `delimiter` is an empty string, each substring will be a single character.
+
+If `allow_empty` is `false`, empty strings between adjacent delimiters are excluded from the array.
+
+If `maxsplit` is greater than `0`, the number of splits may not exceed `maxsplit`. By default, the entire string is split, which is mostly identical to [split()](class_string.md#class_String_method_split).
+
+.. tabs::
+
+```
+```
+
+    var some_string = "One,Two,Three,Four"
+    var some_array = some_string.rsplit(",", true, 1)
+
+    print(some_array.size()) # Prints 2
+    print(some_array[0])     # Prints "One,Two,Three"
+    print(some_array[1])     # Prints "Four"
+
+```
+```
+
+    // In C#, there is no String.RSplit() method.
+
+---
+
+<span id="class_String_method_rstrip"></span>
+
+[String](class_string.md#class_String) **rstrip** ( chars: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_rstrip)
+
+Removes a set of characters defined in `chars` from the string's end. See also [lstrip()](class_string.md#class_String_method_lstrip).
+
+ **Note:** `chars` is not a suffix. Use [trim_suffix()](class_string.md#class_String_method_trim_suffix) to remove a single suffix, rather than a set of characters.
+
+---
+
+<span id="class_String_method_sha1_buffer"></span>
+
+[PackedByteArray](class_packedbytearray.md#class_PackedByteArray) **sha1_buffer** ( ) *const* [🔗](class_string.md#class_String_method_sha1_buffer)
+
+Returns the SHA-1 hash of the string as a [PackedByteArray](class_packedbytearray.md#class_PackedByteArray).
+
+---
+
+<span id="class_String_method_sha1_text"></span>
+
+[String](class_string.md#class_String) **sha1_text** ( ) *const* [🔗](class_string.md#class_String_method_sha1_text)
+
+Returns the SHA-1 hash of the string as another **String**.
+
+---
+
+<span id="class_String_method_sha256_buffer"></span>
+
+[PackedByteArray](class_packedbytearray.md#class_PackedByteArray) **sha256_buffer** ( ) *const* [🔗](class_string.md#class_String_method_sha256_buffer)
+
+Returns the SHA-256 hash of the string as a [PackedByteArray](class_packedbytearray.md#class_PackedByteArray).
+
+---
+
+<span id="class_String_method_sha256_text"></span>
+
+[String](class_string.md#class_String) **sha256_text** ( ) *const* [🔗](class_string.md#class_String_method_sha256_text)
+
+Returns the SHA-256 hash of the string as another **String**.
+
+---
+
+<span id="class_String_method_similarity"></span>
+
+[float](class_float.md#class_float) **similarity** ( text: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_similarity)
+
+Returns the similarity index (Sørensen-Dice coefficient) of this string compared to another. A result of `1.0` means totally similar, while `0.0` means totally dissimilar.
+
+::
+
+    print("ABC123".similarity("ABC123")) # Prints 1.0
+    print("ABC123".similarity("XYZ456")) # Prints 0.0
+    print("ABC123".similarity("123ABC")) # Prints 0.8
+    print("ABC123".similarity("abc123")) # Prints 0.4
+
+---
+
+<span id="class_String_method_simplify_path"></span>
+
+[String](class_string.md#class_String) **simplify_path** ( ) *const* [🔗](class_string.md#class_String_method_simplify_path)
+
+If the string is a valid file path, converts the string into a canonical path. This is the shortest possible path, without `"./"`, and all the unnecessary `".."` and `"/"`.
+
+::
+
+    var simple_path = "./path/to///../file".simplify_path()
+    print(simple_path) # Prints "path/file"
+
+---
+
+<span id="class_String_method_split"></span>
+
+[PackedStringArray](class_packedstringarray.md#class_PackedStringArray) **split** ( delimiter: [String](class_string.md#class_String) = "", allow_empty: [bool](class_bool.md#class_bool) = true, maxsplit: [int](class_int.md#class_int) = 0 ) *const* [🔗](class_string.md#class_String_method_split)
+
+Splits the string using a `delimiter` and returns an array of the substrings. If `delimiter` is an empty string, each substring will be a single character. This method is the opposite of [join()](class_string.md#class_String_method_join).
+
+If `allow_empty` is `false`, empty strings between adjacent delimiters are excluded from the array.
+
+If `maxsplit` is greater than `0`, the number of splits may not exceed `maxsplit`. By default, the entire string is split.
+
+.. tabs::
+
+```
+```
+
+    var some_array = "One,Two,Three,Four".split(",", true, 2)
+
+    print(some_array.size()) # Prints 3
+    print(some_array[0])     # Prints "One"
+    print(some_array[1])     # Prints "Two"
+    print(some_array[2])     # Prints "Three,Four"
+
+```
+```
+
+    // C#'s `Split()` does not support the `maxsplit` parameter.
+    var someArray = "One,Two,Three".Split(",");
+
+    GD.Print(someArray[0]); // Prints "One"
+    GD.Print(someArray[1]); // Prints "Two"
+    GD.Print(someArray[2]); // Prints "Three"
+
+ **Note:** If you only need one substring from the array, consider using [get_slice()](class_string.md#class_String_method_get_slice) which is faster. If you need to split strings with more complex rules, use the [RegEx](class_regex.md#class_RegEx) class instead.
+
+---
+
+<span id="class_String_method_split_floats"></span>
+
+[PackedFloat64Array](class_packedfloat64array.md#class_PackedFloat64Array) **split_floats** ( delimiter: [String](class_string.md#class_String), allow_empty: [bool](class_bool.md#class_bool) = true ) *const* [🔗](class_string.md#class_String_method_split_floats)
+
+Splits the string into floats by using a `delimiter` and returns a [PackedFloat64Array](class_packedfloat64array.md#class_PackedFloat64Array).
+
+If `allow_empty` is `false`, empty or invalid [float](class_float.md#class_float) conversions between adjacent delimiters are excluded.
+
+::
+
+    var a = "1,2,4.5".split_floats(",")         # a is [1.0, 2.0, 4.5]
+    var c = "1| ||4.5".split_floats("|")        # c is [1.0, 0.0, 0.0, 4.5]
+    var b = "1| ||4.5".split_floats("|", false) # b is [1.0, 4.5]
+
+---
+
+<span id="class_String_method_strip_edges"></span>
+
+[String](class_string.md#class_String) **strip_edges** ( left: [bool](class_bool.md#class_bool) = true, right: [bool](class_bool.md#class_bool) = true ) *const* [🔗](class_string.md#class_String_method_strip_edges)
+
+Strips all non-printable characters from the beginning and the end of the string. These include spaces, tabulations (`\t`), and newlines (`\n` `\r`).
+
+If `left` is `false`, ignores the string's beginning. Likewise, if `right` is `false`, ignores the string's end.
+
+---
+
+<span id="class_String_method_strip_escapes"></span>
+
+[String](class_string.md#class_String) **strip_escapes** ( ) *const* [🔗](class_string.md#class_String_method_strip_escapes)
+
+Strips all escape characters from the string. These include all non-printable control characters of the first page of the ASCII table (values from 0 to 31), such as tabulation (`\t`) and newline (`\n`, `\r`) characters, but *not* spaces.
+
+---
+
+<span id="class_String_method_substr"></span>
+
+[String](class_string.md#class_String) **substr** ( from: [int](class_int.md#class_int), len: [int](class_int.md#class_int) = -1 ) *const* [🔗](class_string.md#class_String_method_substr)
+
+Returns part of the string from the position `from` with length `len`. If `len` is `-1` (as by default), returns the rest of the string starting from the given position.
+
+---
+
+<span id="class_String_method_to_ascii_buffer"></span>
+
+[PackedByteArray](class_packedbytearray.md#class_PackedByteArray) **to_ascii_buffer** ( ) *const* [🔗](class_string.md#class_String_method_to_ascii_buffer)
+
+Converts the string to an ASCII/Latin-1 encoded [PackedByteArray](class_packedbytearray.md#class_PackedByteArray). This method is slightly faster than [to_utf8_buffer()](class_string.md#class_String_method_to_utf8_buffer), but replaces all unsupported characters with spaces. This is the inverse of [PackedByteArray.get_string_from_ascii()](class_packedbytearray.md#class_PackedByteArray_method_get_string_from_ascii).
+
+---
+
+<span id="class_String_method_to_camel_case"></span>
+
+[String](class_string.md#class_String) **to_camel_case** ( ) *const* [🔗](class_string.md#class_String_method_to_camel_case)
+
+Returns the string converted to `camelCase`.
+
+---
+
+<span id="class_String_method_to_float"></span>
+
+[float](class_float.md#class_float) **to_float** ( ) *const* [🔗](class_string.md#class_String_method_to_float)
+
+Converts the string representing a decimal number into a [float](class_float.md#class_float). This method stops on the first non-number character, except the first decimal point (`.`) and the exponent letter (`e`). See also [is_valid_float()](class_string.md#class_String_method_is_valid_float).
+
+::
+
+    var a = "12.35".to_float()  # a is 12.35
+    var b = "1.2.3".to_float()  # b is 1.2
+    var c = "12xy3".to_float()  # c is 12.0
+    var d = "1e3".to_float()    # d is 1000.0
+    var e = "Hello!".to_float() # e is 0.0
+
+---
+
+<span id="class_String_method_to_int"></span>
+
+[int](class_int.md#class_int) **to_int** ( ) *const* [🔗](class_string.md#class_String_method_to_int)
+
+Converts the string representing an integer number into an [int](class_int.md#class_int). This method removes any non-number character and stops at the first decimal point (`.`). See also [is_valid_int()](class_string.md#class_String_method_is_valid_int).
+
+::
+
+    var a = "123".to_int()    # a is 123
+    var b = "x1y2z3".to_int() # b is 123
+    var c = "-1.2.3".to_int() # c is -1
+    var d = "Hello!".to_int() # d is 0
+
+---
+
+<span id="class_String_method_to_kebab_case"></span>
+
+[String](class_string.md#class_String) **to_kebab_case** ( ) *const* [🔗](class_string.md#class_String_method_to_kebab_case)
+
+Returns the string converted to `kebab-case`.
+
+ **Note:** Numbers followed by a *single* letter are not separated in the conversion to keep some words (such as "2D") together.
+
+.. tabs::
+
+```
+```
+
+    "Node2D".to_kebab_case()               # Returns "node-2d"
+    "2nd place".to_kebab_case()            # Returns "2-nd-place"
+    "Texture3DAssetFolder".to_kebab_case() # Returns "texture-3d-asset-folder"
+
+```
+```
+
+    "Node2D".ToKebabCase();               // Returns "node-2d"
+    "2nd place".ToKebabCase();            // Returns "2-nd-place"
+    "Texture3DAssetFolder".ToKebabCase(); // Returns "texture-3d-asset-folder"
+
+---
+
+<span id="class_String_method_to_lower"></span>
+
+[String](class_string.md#class_String) **to_lower** ( ) *const* [🔗](class_string.md#class_String_method_to_lower)
+
+Returns the string converted to `lowercase`.
+
+---
+
+<span id="class_String_method_to_multibyte_char_buffer"></span>
+
+[PackedByteArray](class_packedbytearray.md#class_PackedByteArray) **to_multibyte_char_buffer** ( encoding: [String](class_string.md#class_String) = "" ) *const* [🔗](class_string.md#class_String_method_to_multibyte_char_buffer)
+
+Converts the string to system multibyte code page encoded [PackedByteArray](class_packedbytearray.md#class_PackedByteArray). If conversion fails, empty array is returned.
+
+The values permitted for `encoding` are system dependent. If `encoding` is empty string, system default encoding is used.
+
+- For Windows, see Code Page Identifiers .NET names.
+
+- For macOS and Linux/BSD, see `libiconv` library documentation and `iconv --list` for a list of supported encodings.
+
+---
+
+<span id="class_String_method_to_pascal_case"></span>
+
+[String](class_string.md#class_String) **to_pascal_case** ( ) *const* [🔗](class_string.md#class_String_method_to_pascal_case)
+
+Returns the string converted to `PascalCase`.
+
+---
+
+<span id="class_String_method_to_snake_case"></span>
+
+[String](class_string.md#class_String) **to_snake_case** ( ) *const* [🔗](class_string.md#class_String_method_to_snake_case)
+
+Returns the string converted to `snake_case`.
+
+ **Note:** Numbers followed by a *single* letter are not separated in the conversion to keep some words (such as "2D") together.
+
+.. tabs::
+
+```
+```
+
+    "Node2D".to_snake_case()               # Returns "node_2d"
+    "2nd place".to_snake_case()            # Returns "2_nd_place"
+    "Texture3DAssetFolder".to_snake_case() # Returns "texture_3d_asset_folder"
+
+```
+```
+
+    "Node2D".ToSnakeCase();               // Returns "node_2d"
+    "2nd place".ToSnakeCase();            // Returns "2_nd_place"
+    "Texture3DAssetFolder".ToSnakeCase(); // Returns "texture_3d_asset_folder"
+
+---
+
+<span id="class_String_method_to_upper"></span>
+
+[String](class_string.md#class_String) **to_upper** ( ) *const* [🔗](class_string.md#class_String_method_to_upper)
+
+Returns the string converted to `UPPERCASE`.
+
+---
+
+<span id="class_String_method_to_utf8_buffer"></span>
+
+[PackedByteArray](class_packedbytearray.md#class_PackedByteArray) **to_utf8_buffer** ( ) *const* [🔗](class_string.md#class_String_method_to_utf8_buffer)
+
+Converts the string to a UTF-8 encoded [PackedByteArray](class_packedbytearray.md#class_PackedByteArray). This method is slightly slower than [to_ascii_buffer()](class_string.md#class_String_method_to_ascii_buffer), but supports all UTF-8 characters. For most cases, prefer using this method. This is the inverse of [PackedByteArray.get_string_from_utf8()](class_packedbytearray.md#class_PackedByteArray_method_get_string_from_utf8).
+
+---
+
+<span id="class_String_method_to_utf16_buffer"></span>
+
+[PackedByteArray](class_packedbytearray.md#class_PackedByteArray) **to_utf16_buffer** ( ) *const* [🔗](class_string.md#class_String_method_to_utf16_buffer)
+
+Converts the string to a UTF-16 encoded [PackedByteArray](class_packedbytearray.md#class_PackedByteArray). This is the inverse of [PackedByteArray.get_string_from_utf16()](class_packedbytearray.md#class_PackedByteArray_method_get_string_from_utf16).
+
+---
+
+<span id="class_String_method_to_utf32_buffer"></span>
+
+[PackedByteArray](class_packedbytearray.md#class_PackedByteArray) **to_utf32_buffer** ( ) *const* [🔗](class_string.md#class_String_method_to_utf32_buffer)
+
+Converts the string to a UTF-32 encoded [PackedByteArray](class_packedbytearray.md#class_PackedByteArray). This is the inverse of [PackedByteArray.get_string_from_utf32()](class_packedbytearray.md#class_PackedByteArray_method_get_string_from_utf32).
+
+---
+
+<span id="class_String_method_to_wchar_buffer"></span>
+
+[PackedByteArray](class_packedbytearray.md#class_PackedByteArray) **to_wchar_buffer** ( ) *const* [🔗](class_string.md#class_String_method_to_wchar_buffer)
+
+Converts the string to a wide character (`wchar_t`, UTF-16 on Windows, UTF-32 on other platforms) encoded [PackedByteArray](class_packedbytearray.md#class_PackedByteArray). This is the inverse of [PackedByteArray.get_string_from_wchar()](class_packedbytearray.md#class_PackedByteArray_method_get_string_from_wchar).
+
+---
+
+<span id="class_String_method_trim_prefix"></span>
+
+[String](class_string.md#class_String) **trim_prefix** ( prefix: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_trim_prefix)
+
+Removes the given `prefix` from the start of the string, or returns the string unchanged.
+
+---
+
+<span id="class_String_method_trim_suffix"></span>
+
+[String](class_string.md#class_String) **trim_suffix** ( suffix: [String](class_string.md#class_String) ) *const* [🔗](class_string.md#class_String_method_trim_suffix)
+
+Removes the given `suffix` from the end of the string, or returns the string unchanged.
+
+---
+
+<span id="class_String_method_unicode_at"></span>
+
+[int](class_int.md#class_int) **unicode_at** ( at: [int](class_int.md#class_int) ) *const* [🔗](class_string.md#class_String_method_unicode_at)
+
+Returns the character code at position `at`.
+
+See also [chr()](class_string.md#class_String_method_chr), @GDScript.char(), and @GDScript.ord().
+
+---
+
+<span id="class_String_method_uri_decode"></span>
+
+[String](class_string.md#class_String) **uri_decode** ( ) *const* [🔗](class_string.md#class_String_method_uri_decode)
+
+Decodes the string from its URL-encoded format. This method is meant to properly decode the parameters in a URL when receiving an HTTP request. See also [uri_encode()](class_string.md#class_String_method_uri_encode).
+
+.. tabs::
+
+```
+```
+
+    var url = "$DOCS_URL/?highlight=Godot%20Engine%3%docs"
+    print(url.uri_decode()) # Prints "$DOCS_URL/?highlight=Godot Engine:docs"
+
+```
+```
+
+    var url = "$DOCS_URL/?highlight=Godot%20Engine%3%docs"
+    GD.Print(url.URIDecode()) // Prints "$DOCS_URL/?highlight=Godot Engine:docs"
+
+ **Note:** This method decodes `+` as space.
+
+---
+
+<span id="class_String_method_uri_encode"></span>
+
+[String](class_string.md#class_String) **uri_encode** ( ) *const* [🔗](class_string.md#class_String_method_uri_encode)
+
+Encodes the string to URL-friendly format. This method is meant to properly encode the parameters in a URL when sending an HTTP request. See also [uri_decode()](class_string.md#class_String_method_uri_decode).
+
+.. tabs::
+
+```
+```
+
+    var prefix = "$DOCS_URL/?highlight="
+    var url = prefix + "Godot Engine:docs".uri_encode()
+
+    print(url) # Prints "$DOCS_URL/?highlight=Godot%20Engine%3%docs"
+
+```
+```
+
+    var prefix = "$DOCS_URL/?highlight=";
+    var url = prefix + "Godot Engine:docs".URIEncode();
+
+    GD.Print(url); // Prints "$DOCS_URL/?highlight=Godot%20Engine%3%docs"
+
+---
+
+<span id="class_String_method_uri_file_decode"></span>
+
+[String](class_string.md#class_String) **uri_file_decode** ( ) *const* [🔗](class_string.md#class_String_method_uri_file_decode)
+
+Decodes the file path from its URL-encoded format. Unlike [uri_decode()](class_string.md#class_String_method_uri_decode) this method leaves `+` as is.
+
+---
+
+<span id="class_String_method_validate_filename"></span>
+
+[String](class_string.md#class_String) **validate_filename** ( ) *const* [🔗](class_string.md#class_String_method_validate_filename)
+
+Returns a copy of the string with all characters that are not allowed in [is_valid_filename()](class_string.md#class_String_method_is_valid_filename) replaced with underscores.
+
+---
+
+<span id="class_String_method_validate_node_name"></span>
+
+[String](class_string.md#class_String) **validate_node_name** ( ) *const* [🔗](class_string.md#class_String_method_validate_node_name)
+
+Returns a copy of the string with all characters that are not allowed in [Node.name](class_node.md#class_Node_property_name) (`.` `:` `@` `/` `"` `%`) replaced with underscores.
+
+---
+
+<span id="class_String_method_xml_escape"></span>
+
+[String](class_string.md#class_String) **xml_escape** ( escape_quotes: [bool](class_bool.md#class_bool) = false ) *const* [🔗](class_string.md#class_String_method_xml_escape)
+
+Returns a copy of the string with special characters escaped using the XML standard. If `escape_quotes` is `true`, the single quote (`'`) and double quote (`"`) characters are also escaped.
+
+---
+
+<span id="class_String_method_xml_unescape"></span>
+
+[String](class_string.md#class_String) **xml_unescape** ( ) *const* [🔗](class_string.md#class_String_method_xml_unescape)
+
+Returns a copy of the string with escaped characters replaced by their meanings according to the XML standard.
+
+---
+
+### Operator Descriptions
+
+<span id="class_String_operator_neq_String"></span>
+
+[bool](class_bool.md#class_bool) **operator !=** ( right: [String](class_string.md#class_String) ) [🔗](class_string.md#class_String_operator_neq_String)
+
+Returns `true` if both strings do not contain the same sequence of characters.
+
+---
+
+<span id="class_String_operator_neq_StringName"></span>
+
+[bool](class_bool.md#class_bool) **operator !=** ( right: [StringName](class_stringname.md#class_StringName) ) [🔗](class_string.md#class_String_operator_neq_StringName)
+
+Returns `true` if this **String** is not equivalent to the given [StringName](class_stringname.md#class_StringName).
+
+---
+
+<span id="class_String_operator_mod_Variant"></span>
+
+[String](class_string.md#class_String) **operator %** ( right: [Variant](class_variant.md#class_Variant) ) [🔗](class_string.md#class_String_operator_mod_Variant)
+
+Formats the **String**, replacing the placeholders with one or more parameters. To pass multiple parameters, `right` needs to be an [Array](class_array.md#class_Array).
+
+::
+
+    print("I caught %d fishes!" % 2) # Prints "I caught 2 fishes!"
+
+    var my_message = "Travelling to %s, at %2.2f km/h."
+    var location = "Deep Valley"
+    var speed = 40.3485
+    print(my_message % [location, speed]) # Prints "Travelling to Deep Valley, at 40.35 km/h."
+
+For more information, see the [GDScript format strings](../tutorials/scripting/gdscript/gdscript_format_string.md) tutorial.
+
+ **Note:** In C#, this operator is not available. Instead, see how to interpolate strings with "$".
+
+---
+
+<span id="class_String_operator_sum_String"></span>
+
+[String](class_string.md#class_String) **operator +** ( right: [String](class_string.md#class_String) ) [🔗](class_string.md#class_String_operator_sum_String)
+
+Appends `right` at the end of this **String**, also known as a string concatenation.
+
+---
+
+<span id="class_String_operator_sum_StringName"></span>
+
+[String](class_string.md#class_String) **operator +** ( right: [StringName](class_stringname.md#class_StringName) ) [🔗](class_string.md#class_String_operator_sum_StringName)
+
+Appends `right` at the end of this **String**, returning a **String**. This is also known as a string concatenation.
+
+---
+
+<span id="class_String_operator_lt_String"></span>
+
+[bool](class_bool.md#class_bool) **operator <** ( right: [String](class_string.md#class_String) ) [🔗](class_string.md#class_String_operator_lt_String)
+
+Returns `true` if the left **String** comes before `right` in Unicode order, which roughly matches the alphabetical order. Useful for sorting.
+
+---
+
+<span id="class_String_operator_lte_String"></span>
+
+[bool](class_bool.md#class_bool) **operator <=** ( right: [String](class_string.md#class_String) ) [🔗](class_string.md#class_String_operator_lte_String)
+
+Returns `true` if the left **String** comes before `right` in Unicode order, which roughly matches the alphabetical order, or if both are equal.
+
+---
+
+<span id="class_String_operator_eq_String"></span>
+
+[bool](class_bool.md#class_bool) **operator ==** ( right: [String](class_string.md#class_String) ) [🔗](class_string.md#class_String_operator_eq_String)
+
+Returns `true` if both strings contain the same sequence of characters.
+
+---
+
+<span id="class_String_operator_eq_StringName"></span>
+
+[bool](class_bool.md#class_bool) **operator ==** ( right: [StringName](class_stringname.md#class_StringName) ) [🔗](class_string.md#class_String_operator_eq_StringName)
+
+Returns `true` if this **String** is equivalent to the given [StringName](class_stringname.md#class_StringName).
+
+---
+
+<span id="class_String_operator_gt_String"></span>
+
+[bool](class_bool.md#class_bool) **operator >** ( right: [String](class_string.md#class_String) ) [🔗](class_string.md#class_String_operator_gt_String)
+
+Returns `true` if the left **String** comes after `right` in Unicode order, which roughly matches the alphabetical order. Useful for sorting.
+
+---
+
+<span id="class_String_operator_gte_String"></span>
+
+[bool](class_bool.md#class_bool) **operator >=** ( right: [String](class_string.md#class_String) ) [🔗](class_string.md#class_String_operator_gte_String)
+
+Returns `true` if the left **String** comes after `right` in Unicode order, which roughly matches the alphabetical order, or if both are equal.
+
+---
+
+<span id="class_String_operator_idx_int"></span>
+
+[String](class_string.md#class_String) **operator []** ( index: [int](class_int.md#class_int) ) [🔗](class_string.md#class_String_operator_idx_int)
+
+Returns a new **String** that only contains the character at `index`. Indices start from `0`. If `index` is greater or equal to `0`, the character is fetched starting from the beginning of the string. If `index` is a negative value, it is fetched starting from the end. Accessing a string out-of-bounds will cause a run-time error, pausing the project execution if run from the editor.
