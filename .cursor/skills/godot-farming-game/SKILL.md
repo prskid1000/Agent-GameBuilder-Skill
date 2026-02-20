@@ -65,6 +65,17 @@ Generate **independent, complete** prompts for:
 
 One prompt per asset; no "same as above". Full rules: [Asset Prompts](references/asset-prompts-comfyui.md).
 
+## Animation standard (required)
+
+All 2D animations must use **side-by-side horizontal frame strips**.
+
+- Layout each animation as one row, with frames ordered left-to-right.
+- Use one strip per action/direction (idle, walk, tool use, fish, etc.); do not stack time-frames vertically for one animation.
+- In Godot, set `h_frames` to frame count in the strip and `v_frames` to total row count in the sheet.
+- Prefer reusing right-facing strips with `flip_h` for left-facing motion unless unique left art is required.
+
+Apply this rule to player, blob/NPC sprites, machine animations, and generated asset prompts.
+
 ## Build Steps (summary — full detail in step-by-step-guide.md)
 
 | Step | What gets built | Verify |

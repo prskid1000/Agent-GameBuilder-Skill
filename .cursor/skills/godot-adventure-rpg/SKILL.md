@@ -60,6 +60,19 @@ Full rules, examples, and per-folder vs per-asset layout: **[Asset prompts for C
 
 ---
 
+## Animation standard (required)
+
+All 2D animations must use **side-by-side horizontal frame strips**.
+
+- Layout each animation as one row, with frames ordered left-to-right.
+- Use one strip per action/direction (idle, walk, attack, hurt, etc.); do not stack time-frames vertically for one animation.
+- In Godot, set `h_frames` to frame count in the strip and `v_frames` to total row count in the sheet.
+- Prefer reusing right-facing strips with `flip_h` for left-facing motion unless unique left art is required.
+
+Apply this rule to player, enemies, VFX spritesheets, and any generated asset prompts.
+
+---
+
 ## Game Architecture Overview
 
 ```

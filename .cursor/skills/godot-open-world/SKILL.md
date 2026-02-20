@@ -67,6 +67,19 @@ Each prompt must be standalone. Full rules: **[Asset Prompts for ComfyUI](refere
 
 ---
 
+## Animation standard (required)
+
+For any animated 2D assets used by this skill (UI icons, sprite effects, animated billboards, texture-strip effects), use **side-by-side horizontal frame strips**.
+
+- Layout each animation as one row, with frames ordered left-to-right.
+- Use one strip per animation/state; do not stack time-frames vertically for one animation.
+- In Godot, set `h_frames` to frame count in the strip and `v_frames` to total row count in the sheet.
+- Keep tile textures for voxel blocks as static atlas tiles; this rule applies only to animated assets.
+
+Apply this rule to generated asset prompts and any imported animated sprite sheets.
+
+---
+
 ## Architecture Overview
 
 ```
