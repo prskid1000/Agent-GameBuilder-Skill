@@ -5,6 +5,8 @@ This guide walks you through building the complete GodewValley farming game from
 phase by phase. Every section shows **what to do**, **why it works**, and **the exact code**
 matching the `.example` project.
 
+**Rule: After each phase, run the game (F5) and fix any errors before continuing. The project must never be left broken at the end of a step.**
+
 ---
 
 ## Phase 1 — Project Setup
@@ -79,6 +81,8 @@ res://
     ├── flash.tres
     └── circle_transition.gdshader
 ```
+
+**Verify:** Set a minimal main scene (e.g. empty Node2D or placeholder level) and run (F5). Project runs with no errors.
 
 ---
 
@@ -157,6 +161,8 @@ const TOOL_STATE_ANIMATIONS = {
 # Used in player.gd animate() to update all 6 blend positions in one loop.
 # The key "Axe" matches the node name inside AnimationTree > ToolStateMachine.
 ```
+
+**Verify:** Run project. No script parse errors; Enum and Data autoload. Fix any missing preload paths (use placeholder paths or create empty assets so the game runs).
 
 ---
 
@@ -343,6 +349,8 @@ func _on_animation_started(_anim_name: StringName) -> void:
 func _on_animation_finished(_anim_name: StringName) -> void:
     can_move = true    # Restore movement after animation completes.
 ```
+
+**Verify:** Run game with level containing Player. Player moves with WASD; tool cycling (Q/E) and action (Space) do not error. Fix missing node paths or AnimationTree parameter names before Phase 4.
 
 ---
 
@@ -574,6 +582,8 @@ func _on_blob_timer_timeout() -> void:
     blob.global_position = marker.global_position
 ```
 
+**Verify:** Run game. Level loads; player is present; tool_use (hoe/water/seed) and day cycle wiring don’t error. Add stub nodes (e.g. DayTransitionLayer, DayNightGradient) if referenced but not yet built so the scene runs.
+
 ---
 
 ## Phase 5 — Flash Shader + FlashSprite2D
@@ -621,6 +631,8 @@ func flash(start: float, end: float, callback_func: Callable = Callable()) -> vo
     tween.tween_property(material, "shader_parameter/Progress", 0.0, end)
     # Return Progress to 0 (sprite returns to normal color) over 'end' seconds.
 ```
+
+**Verify:** Run game. Hit a tree or blob; flash effect plays. No missing FlashSprite2D or shader parameter errors.
 
 ---
 
@@ -730,6 +742,8 @@ func _on_collision_area_body_entered(_body: Node2D) -> void:
     death.emit(coordinate)
 ```
 
+**Verify:** Run game. Hoe soil, plant seed, water; plant grows and shows in UI. Harvest when complete; plant flashes and is removed. No errors.
+
 ---
 
 ## Phase 7 — Tree + Simple Object
@@ -824,6 +838,8 @@ func _update_sprite() -> void:
     collision.disabled  = size < 2   # Very small objects have no collision.
 ```
 
+**Verify:** Run game. Axe hits tree (flash, health decreases); simple objects display. No errors.
+
 ---
 
 ## Phase 8 — Blob Enemy
@@ -882,6 +898,8 @@ func _die() -> void:
     # via a method track at t=1.4s (set up in the AnimationPlayer editor).
 ```
 
+**Verify:** Run game. Blobs spawn and chase player; sword hits push and damage; death plays explode animation. Fix blob.gd: `speed` is const — use a variable if you need to set SPEED = 0 in _die(). No errors.
+
 ---
 
 ## Phase 9 — Circle Transition Shader
@@ -917,6 +935,8 @@ void fragment() {
     // The ColorRect is a very dark gray. Alpha=1 shows it (black). Alpha=0 hides it (day visible).
 }
 ```
+
+**Verify:** Run game. Trigger day change (e.g. bed); circle wipe plays and level resets. No shader compile errors.
 
 ---
 
@@ -1005,6 +1025,8 @@ func highlight(is_selected: bool) -> void:
     tween.tween_property(texture_rect, "custom_minimum_size", target, 0.1)
 ```
 
+**Verify:** Run game. Tool/seed bar shows and highlights on change; auto-hide works. No missing texture or scene errors.
+
 ---
 
 ## Phase 11 — Plant Info UI
@@ -1062,6 +1084,8 @@ func add(plant_resource: PlantResource) -> void:
     panel.setup(plant_resource)
 ```
 
+**Verify:** Run game. Plant a crop; plant info panel appears and updates on grow/water; panel removes when plant dies. No errors.
+
 ---
 
 ## Phase 12 — Day/Night Cycle
@@ -1091,6 +1115,8 @@ func _process(_delta: float) -> void:
     # gradient.sample(float) gives fine interpolation between stops.
     # gradient.get_color(int) only returns the discrete stop colors.
 ```
+
+**Verify:** Run game. Day/night color shifts over time; sleeping triggers full day transition and level_reset. No errors.
 
 ---
 
@@ -1156,3 +1182,5 @@ var grass_tex = preload("res://graphics/tilesets/grass.png")
 19. Level layout  (place trees, objects, house, scarecrow, blob spawn points)
 20. Performance check  (FPS monitor, memory monitor)
 ```
+
+**Verify (final):** Full playthrough: move, farm, fish, fight blobs, sleep, use machines. All features work; no runtime or missing-asset errors. Fix any remaining issues before considering the build complete.

@@ -1,6 +1,8 @@
 # Step-by-Step Build Guide — 2D Adventure / RPG
 # All 16 phases with exact code, matched to the architecture in SKILL.md
 
+**Rule: After each phase, run the game (F5) and fix any errors before continuing. The project must never be left broken at the end of a step.**
+
 ---
 
 ## Phase 1 — Project Setup
@@ -35,6 +37,8 @@ res://
 │   └── vfx/        hit_spark.tscn, damage_number.tscn, explosion.tscn, flash_sprite_2d.tscn
 └── shaders/        flash.tres, circle_transition.gdshader, vignette.gdshader
 ```
+
+**Verify:** Set a minimal main scene (e.g. empty Node2D) and run (F5). Project opens and runs with no errors.
 
 ---
 
@@ -115,6 +119,8 @@ func _apply_stats(dict: Dictionary) -> void:
     for key in dict:
         player_ref.stats.set(key, dict[key])
 ```
+
+**Verify:** Run project. No script parse errors; all autoloads load. Fix any missing references (e.g. Data.LEVEL_DATA) with stubs if needed so the game runs.
 
 ---
 
@@ -358,6 +364,8 @@ func _on_hurt_area_entered(area: Area2D) -> void:
         take_damage(dmg, Enum.DamageType.PHYSICAL, knockdir)
 ```
 
+**Verify:** Main scene contains Player instance. Run game: player moves with WASD, direction and animations update, dodge/sprint work. Resolve any missing AnimationTree parameters or node paths before Phase 4.
+
 ---
 
 ## Phase 4 — Projectile System
@@ -441,6 +449,8 @@ func _hit(hit_pos: Vector2) -> void:
                 EventBus.damage_dealt.emit(damage, body.global_position, false)
     # Normal single-target damage is handled by _on_body_entered via the body itself
 ```
+
+**Verify:** Run game. Fire ranged attack; projectile spawns, moves, and hits or expires. No errors. Ensure projectile scene and HIT_EFFECT path exist.
 
 ---
 
@@ -531,6 +541,8 @@ func _update_combo_label() -> void:
     tween.tween_property(combo_label, "scale", Vector2.ONE, 0.15)
 ```
 
+**Verify:** Run game. Deal damage: numbers appear and float; combo label shows after 3+ hits; screen shake and hit-stop trigger. No errors.
+
 ---
 
 ## Phase 6 — AAA Polish Systems
@@ -588,3 +600,5 @@ func _on_room_cleared() -> void:
 | Color tint per level | CanvasModulate | level_ready() |
 | Boss death cinematic | AnimationPlayer in boss scene | boss HP = 0 |
 | Particle VFX | GPUParticles2D one-shot | hit, death, pickup |
+
+**Verify:** Run full playthrough. All polish features trigger as expected; no runtime errors. Fix any missing EventBus connections or scene references.

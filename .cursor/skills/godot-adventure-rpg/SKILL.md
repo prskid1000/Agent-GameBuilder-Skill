@@ -129,6 +129,18 @@ GameManager (Autoload)          ← global state, scene switching, save/load
 
 ---
 
+## Incremental verification (required)
+
+**After every phase (or sub-step), the game must run and complete without errors.** Do not proceed to the next phase until:
+
+1. **Run the project** (F5 or Play) and confirm the main scene loads.
+2. **No runtime errors** in the Output/Debugger — fix any missing nodes, typos, or null refs before continuing.
+3. **New behavior is testable** — e.g. after Phase 3 you can move the player; after Phase 5 you can attack and see damage.
+
+If something breaks, fix it in the current phase before adding the next. Never leave the project in a broken state at the end of a step.
+
+---
+
 ## Build Workflow — 16 Phases
 
 Work through these phases in order. Each phase produces testable output.
@@ -144,12 +156,16 @@ Work through these phases in order. Each phase produces testable output.
 - Create all autoload scripts (empty shells first)
 - Set up folder structure
 
+**Verify:** Project runs (F5). A minimal test scene or placeholder main scene loads with no errors.
+
 ### Phase 2 — Global Scripts
 → See `references/enums-data.md`
 
 - `enums.gd` — all enums (EnemyType, ItemType, WeaponType, DamageType, QuestState…)
 - `data.gd` — stat tables (enemy HP/speed/damage, item values, weapon damage ranges)
 - `event_bus.gd` — shared signals (enemy_died, item_picked_up, quest_updated, player_died)
+
+**Verify:** Project still runs. No script parse errors; autoloads load without error.
 
 ### Phase 3 — Player Scene + AnimationTree
 → See `references/step-by-step-guide.md` Phase 3
@@ -160,6 +176,8 @@ Work through these phases in order. Each phase produces testable output.
 - Can dodge-roll (iframe window = 0.3s)
 - Can sprint (speed multiplier while sprint held)
 
+**Verify:** Main scene has Player. Run game: player moves with WASD, animations play, no errors.
+
 ### Phase 4 — Stats + Inventory (data layer)
 → See `references/enums-data.md`
 
@@ -167,6 +185,8 @@ Work through these phases in order. Each phase produces testable output.
 - `InventorySystem` (array of ItemResource, max_slots=30)
 - `EquipmentSlots` (weapon, shield, helmet, armor, boots, ring x2, accessory x2)
 - Stats automatically recalculated when equipment changes
+
+**Verify:** Game runs. Player has stats; no errors when opening inventory or changing equipment (if UI exists).
 
 ### Phase 5 — Combat: Melee
 → See `references/combat-enemies.md` Phase 5
@@ -178,6 +198,8 @@ Work through these phases in order. Each phase produces testable output.
 - Screen shake on heavy hits
 - Floating damage numbers (red=normal, yellow=crit, white=miss)
 
+**Verify:** Run game. Attack key triggers attack animation; hitting an enemy applies damage and shows numbers (once enemies exist); no errors.
+
 ### Phase 6 — Combat: Ranged + Projectiles
 → See `references/combat-enemies.md` Phase 6
 
@@ -187,6 +209,8 @@ Work through these phases in order. Each phase produces testable output.
 - Piercing, bouncing, and homing variants via flags
 - On hit: impact VFX + SFX, apply damage, queue_free
 
+**Verify:** Run game. Ranged attack spawns projectile; projectile moves and hits (or times out); no errors.
+
 ### Phase 7 — Enemy Base System
 → See `references/combat-enemies.md` Phase 7
 
@@ -195,6 +219,8 @@ Work through these phases in order. Each phase produces testable output.
 - Shared signals via EventBus (enemy_died broadcasts drops + quest progress)
 - Hit flash using same FlashSprite2D shader as farming game
 - Drop loot on death (weighted random table in data.gd)
+
+**Verify:** Run game. At least one enemy type in level: moves, chases player, takes damage, dies and drops; no errors.
 
 ### Phase 8 — Enemy Types
 → See `references/combat-enemies.md` Phase 8
@@ -207,6 +233,8 @@ Each type extends EnemyBase and overrides `_attack()`:
 - **Exploder** — rushes player and detonates (AOE)
 - **Boss** — multi-phase, scripted attack patterns, health bar UI
 
+**Verify:** Run game. Each new enemy type behaves as intended (melee, ranged, etc.); no errors.
+
 ### Phase 9 — Level Building: Outdoor
 → See `references/level-building.md` Phase 9
 
@@ -215,6 +243,8 @@ Each type extends EnemyBase and overrides `_attack()`:
 - Ambient 2D lights (PointLight2D + LightOccluder2D for shadows)
 - Weather layer (rain particles — reuse farming game system)
 - Outdoor camera: smooth follow with level boundaries (Camera2D limits)
+
+**Verify:** Run game. Outdoor level loads; player and enemies move on terrain; camera stays in bounds; no errors.
 
 ### Phase 10 — Level Building: Indoor / Dungeon
 → See `references/level-building.md` Phase 10
@@ -225,6 +255,8 @@ Each type extends EnemyBase and overrides `_attack()`:
 - Roof tiles fade when player enters (same as farming game house)
 - Door triggers: Area2D → animate door open → load next room/floor
 
+**Verify:** Run game. Enter dungeon; rooms/doors work; Y-sort and roof fade correct; no errors.
+
 ### Phase 11 — Level Transitions + Game Manager
 → See `references/level-building.md` Phase 11
 
@@ -232,6 +264,8 @@ Each type extends EnemyBase and overrides `_attack()`:
 - Circle wipe transition shader (reuse from farming game)
 - Persistent data between levels (player HP, inventory) via GameManager singleton
 - Floor counter for dungeon (Floor 1 / 2 / 3…) shown in HUD
+
+**Verify:** Run game. Trigger level/room transition; scene changes with wipe; player state persists; no errors.
 
 ### Phase 12 — Boss Fight
 → See `references/combat-enemies.md` Phase 12
@@ -243,6 +277,8 @@ Each type extends EnemyBase and overrides `_attack()`:
 - Boss health bar: full-width UI at top of screen (fades between phases)
 - Death sequence: slow-mo flash → explosion VFX → cinematic message
 
+**Verify:** Run game. Enter boss room; doors lock; phases and health bar update; boss dies and doors unlock; no errors.
+
 ### Phase 13 — UI System
 → See `references/ui-audio-save.md` Phase 13
 
@@ -253,6 +289,8 @@ Each type extends EnemyBase and overrides `_attack()`:
 - Pause menu (resume / options / quit)
 - Dialogue box (typewriter effect, branching choices, portrait)
 
+**Verify:** Run game. HUD updates with HP/MP; inventory and equipment open/close; pause works; no errors.
+
 ### Phase 14 — Audio System
 → See `references/ui-audio-save.md` Phase 14
 
@@ -262,6 +300,8 @@ Each type extends EnemyBase and overrides `_attack()`:
 - Spatial SFX for distant enemies (AudioStreamPlayer2D)
 - Master/SFX/Music bus volumes saved to user settings
 
+**Verify:** Run game. SFX and music play; crossfade on scene change; no missing files or errors.
+
 ### Phase 15 — Save / Load System
 → See `references/ui-audio-save.md` Phase 15
 
@@ -269,6 +309,8 @@ Each type extends EnemyBase and overrides `_attack()`:
 - Saved data: player stats, inventory, equipment, current level, flags (doors opened, bosses defeated, quests)
 - Auto-save on room transition + manual save at save points
 - New game / continue detection on main menu
+
+**Verify:** Run game. Save and load; quit and continue; state matches (level, HP, inventory); no errors.
 
 ### Phase 16 — Polish + AAA Feel
 → See `references/step-by-step-guide.md` Phase 16
@@ -280,6 +322,8 @@ Each type extends EnemyBase and overrides `_attack()`:
 - Particle VFX: hit sparks, blood splatter, magic dust, explosion
 - Procedural screenshake via sine noise
 - Post-processing: subtle vignette + color correction shader per level theme
+
+**Verify:** Run game. Shake, hit-stop, combo, damage numbers, and VFX trigger correctly; no errors.
 
 ---
 

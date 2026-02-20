@@ -45,6 +45,18 @@ Do not guess Godot API or node behavior when the answer is in @.docs; look it up
 
 ---
 
+## Incremental verification (required)
+
+**After every step (or sub-step), the game must run and complete without errors.** Do not proceed to the next step until:
+
+1. **Run the project** (F5 or Play) and confirm the main scene loads.
+2. **No runtime or parse errors** in the Output/Debugger — fix missing nodes, typos, or null refs before continuing.
+3. **New behavior is testable** — e.g. after Step 3 you can move the player; after Step 6 you can use tools and see level reactions.
+
+If something breaks, fix it in the current step before adding the next. Never leave the project in a broken state at the end of a step.
+
+---
+
 ## Asset prompt generation (ComfyUI)
 
 When the user wants **prompts to create or edit assets** (sprites, tiles, plants, icons, dialogue audio), generate **independent, complete prompts** for:
@@ -97,6 +109,8 @@ Data="*res://global/data.gd"
 
 **User tweak:** Window size — change to `1280x720` if 1920x1080 is too large for your screen.
 
+**Verify:** Run project (F5). Main scene loads (use a minimal placeholder scene if level not ready). No errors.
+
 ---
 
 ### Step 2 — Global Scripts (Autoloads)
@@ -107,6 +121,8 @@ See full source in [enums-data.md](references/enums-data.md).
 
 Key enums: `Style`, `State`, `Tool`, `Machine`, `Seed`, `Item`, `Shop`
 Key data constants: `PLAYER_SKINS`, `TILE_SIZE=16`, `PLANT_DATA`, `MACHINE_UPGRADE_COST`, `TOOL_STATE_ANIMATIONS`
+
+**Verify:** Run project. No script parse errors; Enum and Data autoload without error.
 
 ---
 
@@ -137,6 +153,8 @@ Full script in [scripts.md → player.gd](references/scripts.md).
 
 **User tweak (AnimationTree):** See Step 4 below for editor-only animation tree setup.
 
+**Verify:** Run game with level containing Player. Player moves with WASD; tool cycling (Q/E) and action (Space) don’t error. Fix any missing node paths or AnimationTree refs.
+
 ---
 
 ### Step 4 — AnimationTree Setup
@@ -153,6 +171,8 @@ Summary of what to build:
 - Each BlendSpace2D: 9 points (4 cardinals + 4 diagonals + center) with direction animations
 
 `Data.TOOL_STATE_ANIMATIONS` keys match the BlendSpace2D node names in ToolStateMachine.
+
+**Verify:** After editor setup, run game. Idle/walk and tool animations play correctly; no animation tree errors.
 
 ---
 
@@ -194,6 +214,8 @@ Full script in [scripts.md → level.gd](references/scripts.md).
 
 **User tweak:** Paint TileMaps in editor — see [User-Only Editor Tweaks → TileMaps](#tilemaps).
 
+**Verify:** Run game. Level loads; player is on the level; day timer and gradient work if wired. No missing node or script errors.
+
 ---
 
 ### Step 6 — Object Scenes
@@ -217,6 +239,8 @@ Groups: `"Objects"` → tree, blob, simple_object; `"Plants"` → plant; `"Machi
 
 Full scripts in [scripts.md](references/scripts.md). Full scene trees in [scenes.md](references/scenes.md).
 
+**Verify:** Run game. Hoe/water/seed on soil, axe/sword on objects; plants and objects respond. Blobs spawn and move. No errors.
+
 ---
 
 ### Step 7 — Flash Shader
@@ -228,6 +252,8 @@ Enable **Local to Scene** on the ShaderMaterial so each object flashes independe
 
 Circle transition shader: draws expanding circle wipe using UV distance + `progress` uniform.
 See full GLSL in [scripts.md → shaders](references/scripts.md).
+
+**Verify:** Run game. Hit a tree/blob or harvest plant; flash effect plays. Day transition circle works when triggered. No shader/material errors.
 
 ---
 
@@ -246,6 +272,8 @@ See full GLSL in [scripts.md → shaders](references/scripts.md).
 
 Full scripts in [scripts.md](references/scripts.md). Full scene trees in [scenes.md](references/scenes.md).
 
+**Verify:** Run game. Tool/seed UI shows and highlights; plant info panels appear for planted crops; fishing minigame opens at coast. No UI or missing-scene errors.
+
 ---
 
 ### Step 9 — Plant Resource
@@ -263,6 +291,8 @@ Methods: `setup(seed_enum)`, `grow(sprite)`, `decay(plant)`, `get_complete()`, `
 
 Emits `changed` signal on `death_count`, `dead` set — used by plant_info to update bars.
 
+**Verify:** (Covered by Step 6/8.) Planting, growing, watering, and harvesting update plant state and UI; no resource errors.
+
 ---
 
 ### Step 10 — House Scene
@@ -271,6 +301,8 @@ Emits `changed` signal on `death_count`, `dead` set — used by plant_info to up
 
 Uses `HouseTileSet.tres` (premade). Roof fades out when player enters.
 Contains `tv.tscn` (AnimatedSprite2D showing rain/sun forecast) and `bed.tscn` (triggers day change).
+
+**Verify:** Run game. Enter house; roof fades. Use bed; day transition plays and level resets. No errors.
 
 ---
 
@@ -281,6 +313,8 @@ Already wired in `level.gd`. Key logic:
 - `day_restart()` tweens `circle_transition progress` 0→1, calls `level_reset()`, then 1→0
 - `level_reset()`: grows plants, clears soil water, restarts timer, resets objects, applies rain
 
+**Verify:** Run game. Day/night color and timer advance; sleeping triggers full day cycle and plant growth; no errors.
+
 ---
 
 ### Step 12 — Final Level Layout
@@ -288,6 +322,8 @@ Already wired in `level.gd`. Key logic:
 Place in editor: Trees (×31), SimpleObjects (×37), House, ScareCrow, BlobSpawnPositions (×11 Marker2Ds).
 Paint GrassLayer terrain, WaterLayer tiles, SoilLayer terrain (for testing).
 See [scenes.md → level positions](references/scenes.md) for exact coordinates from `.example`.
+
+**Verify:** Run full playthrough. Move, farm, fish, fight blobs, sleep; all systems work. No errors. Fix any remaining missing assets or node paths.
 
 ---
 
