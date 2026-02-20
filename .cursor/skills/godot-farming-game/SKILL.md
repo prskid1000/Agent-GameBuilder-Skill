@@ -3,77 +3,96 @@ name: godot-farming-game
 description: >
   Creates a Godot 4 top-down farming game (Stardew Valley style) step by step,
   including farming, fishing, combat, machines, day/night cycle, plants, resources,
-  and UI. Based on the GodewValley .example project. Use when the user wants to
-  create a Godot game similar to the sample project, build farming game mechanics,
-  or recreate features from the tutorial transcript. When Godot API or how-to
-  details are needed, use the project's @.docs (Godot engine docs). Can generate
-  independent, complete ComfyUI prompts for assets (OpenDUI, Flux Kontext,
+  and UI. Based on the .examples/godot-valley project (GodewValley). Use when the
+  user wants to create a Godot game similar to the sample project, build farming
+  game mechanics, or recreate features from the tutorial. When Godot API or
+  how-to details are needed, use the project's @.docs (Godot engine docs). Can
+  generate independent, complete ComfyUI prompts for assets (OpenDUI, Flux Kontext,
   Chatterbox TTS).
 ---
 
-# Godot Farming Game — Step-by-Step Skill
+# Godot Farming Game Skill
 
-This skill guides you through building a complete Godot 4 farming game from scratch,
-matching the `.example` project (GodewValley). The agent generates ~95% of all code
-and scene structure. The remaining ~5% are editor-only tweaks documented in
-**[User-Only Editor Tweaks](#user-only-editor-tweaks)** at the bottom.
+Builds a complete Godot 4 farming / life-sim game matching `.examples/godot-valley`
+(GodewValley). The agent generates ~95% of all code and scene structure.
 
 ## Quick References
-- **[Step-by-Step Build Guide — START HERE](references/step-by-step-guide.md)** ← full tutorial rewrite with exact code
+
+- **[Step-by-Step Build Guide — START HERE](references/step-by-step-guide.md)**
 - [Project Config & Input Map](references/project-config.md)
 - [Enums & Data Globals](references/enums-data.md)
-- [All Scripts with Line-by-Line Comments](references/scripts.md)
-- [All Scene Trees (node hierarchy overview)](references/scenes.md)
-- [All .tscn Files Line-by-Line — every node, property, connection explained](references/scene-files.md)
+- [All Scripts with Comments](references/scripts.md)
+- [All Scene Trees](references/scenes.md)
+- [All .tscn Files](references/scene-files.md)
 - [Asset Paths + Audio](references/assets.md)
-- [Asset prompts for ComfyUI (OpenDUI, Flux Kontext, Chatterbox TTS)](references/asset-prompts-comfyui.md)
+- [Asset Prompts for ComfyUI](references/asset-prompts-comfyui.md)
 - [Godot Concepts Used](references/godot-concepts.md)
-- [Screen-by-Screen — What you see & which script drives it](references/screen-by-screen.md)
-- Original tutorial transcript: *(deleted — content fully captured in step-by-step-guide.md)*
+- [Screen-by-Screen Guide](references/screen-by-screen.md)
 
+## Example project
+
+Run `.examples/godot-valley/project.godot` in Godot 4.6 to see the finished game.
+
+## Using @.docs
+
+Look up Godot APIs in `.docs/godot-docs-md/`:
+- `classes/class_*.md` — class reference (TileMapLayer, AnimationTree, GPUParticles2D…)
+- `tutorials/` — step-by-step guides
+
+Do not guess API behavior; look it up and cite when relevant.
 ---
 
-## Using Godot engine documentation (@.docs)
-
-When you need to **look up Godot APIs, classes, tutorials, or how to implement something**, use the project’s **@.docs** (or path `.docs/godot-docs-md/`). It contains the full Godot engine documentation in Markdown.
-
-- **When to use:** Figuring out class methods/signals, node usage, TileMap/AnimationTree/particles setup, signals, resources, etc.
-- **How:** Reference or read from `.docs/godot-docs-md/` — e.g. `classes/class_*.md` for class reference, `tutorials/` for guides.
-- **Search:** Use semantic or grep search under `.docs/godot-docs-md/` for topics (e.g. AnimationTree, TileSet, GPUParticles2D).
-
-Do not guess Godot API or node behavior when the answer is in @.docs; look it up and cite the doc when relevant.
-
----
 
 ## Incremental verification (required)
 
-**After every step (or sub-step), the game must run and complete without errors.** Do not proceed to the next step until:
-
-1. **Run the project** (F5 or Play) and confirm the main scene loads.
-2. **No runtime or parse errors** in the Output/Debugger — fix missing nodes, typos, or null refs before continuing.
-3. **New behavior is testable** — e.g. after Step 3 you can move the player; after Step 6 you can use tools and see level reactions.
-
+After every step the game must run cleanly:
+1. Run project (F5) — confirm main scene loads.
+2. No runtime or parse errors in Output/Debugger.
+3. New behavior is testable (player moves, tools work, plants grow, etc.).
 If something breaks, fix it in the current step before adding the next. Never leave the project in a broken state at the end of a step.
 
 ---
 
+
+Fix errors before proceeding to the next step.
+
 ## Asset prompt generation (ComfyUI)
 
-When the user wants **prompts to create or edit assets** (sprites, tiles, plants, icons, dialogue audio), generate **independent, complete prompts** for:
+Generate **independent, complete** prompts for:
+- **OpenDUI / OpenDiT** — sprites, tiles, plants, UI art.
+- **Flux Kontext** — image edit / style transfer / character variants.
+- **Chatterbox TTS** — NPC dialogue, barks, narration.
 
-- **OpenDUI / OpenDiT** — text-to-image (sprites, tiles, plants, UI art).
-- **Flux Kontext** — image edit / style transfer / consistency (e.g. hat variants, plant stages).
-- **Chatterbox TTS** — text-to-speech (NPC dialogue, barks, narration).
+One prompt per asset; no "same as above". Full rules: [Asset Prompts](references/asset-prompts-comfyui.md).
 
-Use **one prompt per asset** (or one `PROMPTS.md` per folder listing each asset and its full prompt). Each prompt must be standalone — no “same as above” or implicit context.
+## Build Steps (summary — full detail in step-by-step-guide.md)
 
-Full rules, examples, and per-folder vs per-asset layout: **[Asset prompts for ComfyUI](references/asset-prompts-comfyui.md)**.
+| Step | What gets built | Verify |
+|------|----------------|--------|
+| 1 | Project setup, input map, physics layers | F5 runs, no errors |
+| 2 | Enum + Data autoloads | No parse errors |
+| 3 | Player scene + movement | Player moves with WASD |
+| 4 | AnimationTree (editor-only) | Idle/walk/tool animations play |
+| 5 | Level scene + TileMaps | Level loads, player on map |
+| 6 | Objects (plant, tree, blob, machines, VFX) | Tools affect world, blobs spawn |
+| 7 | Flash + circle-wipe shaders | Hit flash and day transition work |
+| 8 | UI scenes (tool bar, fishing, plant info) | UI visible and responsive |
+| 9 | PlantResource | Planting, growing, harvesting work |
+| 10 | House scene (roof fade, bed, TV) | Enter house, use bed |
+| 11 | Day/night cycle | Day timer, color, rain, level reset |
+| 12 | Final level layout | Full playthrough without errors |
 
----
+## User-Only Editor Steps
 
-## Build Workflow (Follow in Order)
+These must be done by hand in the Godot editor (cannot be scripted):
+- **AnimationTree** — BlendTree, BlendSpace2D, OneShot nodes, transitions
+- **TileMaps** — paint terrain, custom data (farmable, coast), Z-index
+- **Daytime Gradient** — set on Level node export (4 color stops)
+- **Theme** — font, StyleBoxTexture for PanelContainer
+- **Collision shapes** — CapsuleShape2D per scene, tuned per character
+- **Particle systems** — rain floor + drops, emitting=false by default
 
-### Step 1 — Project Setup
+Full click-by-click instructions for every editor step: [step-by-step-guide.md → User-Only Editor Tweaks](references/step-by-step-guide.md).
 
 **Agent produces:**
 - `project.godot` with all settings below
