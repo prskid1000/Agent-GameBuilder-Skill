@@ -6,7 +6,7 @@ Every feature available across all skills, with the exact source reference for e
 
 ## Player
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | 2D CharacterBody2D | ✓ | ✓ | |
 | 3D CharacterBody3D | | | ✓ |
@@ -25,15 +25,15 @@ Every feature available across all skills, with the exact source reference for e
 | Tool cycling (Q/E) | | ✓ | |
 
 **Best player reference:**
-- 2D with animation: `godot-adventure-rpg/references/step-by-step-guide.md` Phase 3
-- 2D with tools: `godot-farming-game/references/step-by-step-guide.md` Step 3
-- 3D first-person: `godot-open-world/references/scripts.md` → player.gd
+- 2D with animation: `2d-rpg/step-by-step-guide.md` Phase 3
+- 2D with tools: `2d-farming/step-by-step-guide.md` Step 3
+- 3D first-person: `3d-voxel/scripts.md` → player.gd
 
 ---
 
 ## Combat
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | Melee attack (hitbox Area2D) | ✓ | (sword tool) | |
 | 3-hit light combo | ✓ | | |
@@ -50,13 +50,13 @@ Every feature available across all skills, with the exact source reference for e
 | Block / place blocks | | | ✓ |
 | Break blocks (raycast hit) | | | ✓ |
 
-**Best combat reference:** `godot-adventure-rpg/references/combat-enemies.md`
+**Best combat reference:** `2d-rpg/combat-enemies.md`
 
 ---
 
 ## Enemies / AI
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | NavigationAgent2D pathfinding | ✓ | | |
 | State machine (Idle/Patrol/Chase/Attack/Dead) | ✓ | | |
@@ -71,13 +71,13 @@ Every feature available across all skills, with the exact source reference for e
 | Drop loot on death | ✓ | | |
 | EventBus death signal | ✓ | | |
 
-**Best enemy reference:** `godot-adventure-rpg/references/combat-enemies.md` Phases 7–12
+**Best enemy reference:** `2d-rpg/combat-enemies.md` Phases 7–12
 
 ---
 
 ## World / Level
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | TileMapLayer (terrain autotiling) | ✓ | ✓ | |
 | Multiple TileMap layers (water/grass/soil) | | ✓ | |
@@ -96,14 +96,14 @@ Every feature available across all skills, with the exact source reference for e
 | 3D OmniLight (torches) | | | ✓ |
 
 **Best level reference:**
-- 2D: `godot-adventure-rpg/references/level-building.md`
-- 3D chunked: `godot-open-world/references/step-by-step-guide.md`
+- 2D: `2d-rpg/level-building.md`
+- 3D chunked: `3d-voxel/step-by-step-guide.md`
 
 ---
 
 ## Time / Environment
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | Day timer (countdown) | | ✓ | |
 | Day/night (2D CanvasModulate + Gradient) | | ✓ | |
@@ -117,14 +117,14 @@ Every feature available across all skills, with the exact source reference for e
 | Time persistence (JSON save) | ✓ | | |
 
 **Best time/cycle reference:**
-- 2D: `godot-farming-game/references/step-by-step-guide.md` Step 11
-- 3D: `godot-open-world/references/scripts.md` → sky.gd
+- 2D: `2d-farming/step-by-step-guide.md` Step 11
+- 3D: `3d-voxel/scripts.md` → sky.gd
 
 ---
 
 ## Farming / Resource Activities
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | Hoe tool (till soil) | | ✓ | |
 | Watering can tool | | ✓ | |
@@ -143,13 +143,13 @@ Every feature available across all skills, with the exact source reference for e
 | Block break | | | ✓ |
 | Block persistence (SQLite) | | | ✓ |
 
-**Best farming reference:** `godot-farming-game/references/step-by-step-guide.md` Steps 6–10
+**Best farming reference:** `2d-farming/step-by-step-guide.md` Steps 6–10
 
 ---
 
 ## Inventory / Items / Equipment
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | Full grid inventory (30 slots, drag-drop) | ✓ | | |
 | Equipment slots (weapon/armor/rings) | ✓ | | |
@@ -163,14 +163,14 @@ Every feature available across all skills, with the exact source reference for e
 | Skin/hat upgrades | | ✓ | |
 
 **Best inventory reference:**
-- Full grid: `godot-adventure-rpg/references/ui-audio-save.md` Phase 13
-- Tool bar: `godot-farming-game/references/step-by-step-guide.md` Step 8
+- Full grid: `2d-rpg/ui-audio-save.md` Phase 13
+- Tool bar: `2d-farming/step-by-step-guide.md` Step 8
 
 ---
 
 ## UI / HUD
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | HP / MP / stamina bars | ✓ | | |
 | Minimap | ✓ | | |
@@ -192,7 +192,7 @@ Every feature available across all skills, with the exact source reference for e
 
 ## Persistence / Save
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | Save to JSON (`user://save.json`) | ✓ | | |
 | 3 save slots | ✓ | | |
@@ -209,7 +209,7 @@ Every feature available across all skills, with the exact source reference for e
 
 ## Audio
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | Pooled SFX (10 players, FIFO) | ✓ | | |
 | Music crossfade (exploration/combat/boss) | ✓ | | |
@@ -218,13 +218,13 @@ Every feature available across all skills, with the exact source reference for e
 | Volume buses saved to settings | ✓ | | |
 | Basic SFX on interactions | | ✓ | |
 
-**Best audio reference:** `godot-adventure-rpg/references/ui-audio-save.md` Phase 14
+**Best audio reference:** `2d-rpg/ui-audio-save.md` Phase 14
 
 ---
 
 ## VFX / Shaders
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | Flash shader (hit feedback) | ✓ (same) | ✓ | |
 | Circle wipe transition shader | ✓ (same) | ✓ | |
@@ -241,7 +241,7 @@ Every feature available across all skills, with the exact source reference for e
 
 ## Performance / Architecture
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | Autoloads (GameManager, Enum, Data, Audio, EventBus) | ✓ | | |
 | Autoloads (Enum, Data) | | ✓ | |

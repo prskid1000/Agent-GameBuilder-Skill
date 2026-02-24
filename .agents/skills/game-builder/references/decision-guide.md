@@ -1,6 +1,6 @@
-# Decision Guide — Which Skill for Which Game
+# Decision Guide — Which Template for Which Game
 
-Answer the questions below to find the right skill(s) for your game.
+Answer the questions below to find the right template(s) for your game.
 
 ---
 
@@ -16,14 +16,14 @@ Answer the questions below to find the right skill(s) for your game.
 
 ## 3D Games
 
-| What best describes your game? | Skill |
-|--------------------------------|-------|
-| Infinite terrain, place/break blocks, Minecraft-like | **godot-open-world** |
-| Exploration, building, survival in a voxel world | **godot-open-world** |
-| Voxel world + combat / enemies / RPG | **godot-open-world** + **godot-adventure-rpg** combat |
-| 3D exploration but no voxels (e.g. 3D platformer) | Neither — extend **godot-open-world** player base |
+| What best describes your game? | Template |
+|--------------------------------|----------|
+| Infinite terrain, place/break blocks, Minecraft-like | **3D Voxel Open-World** |
+| Exploration, building, survival in a voxel world | **3D Voxel Open-World** |
+| Voxel world + combat / enemies / RPG | **3D Voxel Open-World** + **2D Adventure RPG** combat |
+| 3D exploration but no voxels (e.g. 3D platformer) | Neither — extend **3D Voxel Open-World** player base |
 
-**godot-open-world** gives you: chunked world, procedural terrain (FastNoiseLite), AsyncMesh, SQLite persistence, day/night sky, torch lighting, first-person player.
+**3D Voxel Open-World** gives you: chunked world, procedural terrain (FastNoiseLite), AsyncMesh, SQLite persistence, day/night sky, torch lighting, first-person player.
 
 ---
 
@@ -31,37 +31,37 @@ Answer the questions below to find the right skill(s) for your game.
 
 ### Primary activity:
 
-| Primary activity | Skill |
-|-----------------|-------|
-| Combat, fighting enemies, killing bosses | **godot-adventure-rpg** |
-| Farming, planting, harvesting crops | **godot-farming-game** |
-| Fishing | **godot-farming-game** (has fishing minigame built-in) |
-| Exploring dungeons, rooms, maps | **godot-adventure-rpg** |
-| Talking to NPCs, quests, story | **godot-adventure-rpg** |
-| Building / placing machines | **godot-farming-game** (machine placement system) |
-| Day/night cycle, seasons | **godot-farming-game** |
-| Collecting items, inventory management | **godot-adventure-rpg** (full grid inventory) |
-| Simple item cycling (tool bar) | **godot-farming-game** (simpler tool UI) |
+| Primary activity | Template |
+|-----------------|----------|
+| Combat, fighting enemies, killing bosses | **2D Adventure RPG** |
+| Farming, planting, harvesting crops | **2D Farming Game** |
+| Fishing | **2D Farming Game** (has fishing minigame built-in) |
+| Exploring dungeons, rooms, maps | **2D Adventure RPG** |
+| Talking to NPCs, quests, story | **2D Adventure RPG** |
+| Building / placing machines | **2D Farming Game** (machine placement system) |
+| Day/night cycle, seasons | **2D Farming Game** |
+| Collecting items, inventory management | **2D Adventure RPG** (full grid inventory) |
+| Simple item cycling (tool bar) | **2D Farming Game** (simpler tool UI) |
 
 ---
 
-## Genre → Skill Map
+## Genre → Template Map
 
-| Genre | Primary skill | Add-on skill |
-|-------|--------------|--------------|
-| Action RPG (Zelda-like) | **adventure-rpg** | — |
-| Dungeon crawler / roguelite | **adventure-rpg** | — |
-| Metroidvania | **adventure-rpg** | — |
-| Top-down shooter | **adventure-rpg** | — |
-| Farming sim (Stardew-like) | **farming-game** | — |
-| Life sim / town builder | **farming-game** | — |
-| Farming + combat (Story of Seasons Trio of Towns-like) | **farming-game** | **adventure-rpg** combat |
-| Action adventure with homestead | **adventure-rpg** | **farming-game** farming loop |
-| Minecraft 3D | **open-world** | — |
-| 3D survival crafting | **open-world** | **farming-game** crafting/resource loop |
-| 3D RPG voxel world | **open-world** | **adventure-rpg** combat + enemies |
-| Tower defense | **adventure-rpg** (enemy AI + spawning) | — |
-| Visual novel / dialogue-heavy | **adventure-rpg** (dialogue system) | — |
+| Genre | Primary template | Add-on template |
+|-------|-----------------|-----------------|
+| Action RPG (Zelda-like) | **2D RPG** | — |
+| Dungeon crawler / roguelite | **2D RPG** | — |
+| Metroidvania | **2D RPG** | — |
+| Top-down shooter | **2D RPG** | — |
+| Farming sim (Stardew-like) | **2D Farm** | — |
+| Life sim / town builder | **2D Farm** | — |
+| Farming + combat (Story of Seasons Trio of Towns-like) | **2D Farm** | **2D RPG** combat |
+| Action adventure with homestead | **2D RPG** | **2D Farm** farming loop |
+| Minecraft 3D | **3D Voxel** | — |
+| 3D survival crafting | **3D Voxel** | **2D Farm** crafting/resource loop |
+| 3D RPG voxel world | **3D Voxel** | **2D RPG** combat + enemies |
+| Tower defense | **2D RPG** (enemy AI + spawning) | — |
+| Visual novel / dialogue-heavy | **2D RPG** (dialogue system) | — |
 
 ---
 
@@ -69,7 +69,7 @@ Answer the questions below to find the right skill(s) for your game.
 
 Check off what your game needs, then look at which column has the most checkmarks:
 
-| Feature | adventure-rpg | farming-game | open-world |
+| Feature | 2D RPG | 2D Farm | 3D Voxel |
 |---------|:---:|:---:|:---:|
 | 2D top-down movement | ✓ | ✓ | |
 | 3D first-person movement | | | ✓ |
@@ -106,21 +106,21 @@ Check off what your game needs, then look at which column has the most checkmark
 | Shaders (opaque/transparent/sprite) | | | ✓ |
 | ComfyUI asset prompts | ✓ | ✓ | ✓ |
 
-**Tiebreaker:** If you have equal checkmarks in adventure-rpg and farming-game, pick **adventure-rpg** for combat-first games and **farming-game** for resource/activity-first games.
+**Tiebreaker:** If you have equal checkmarks in 2D RPG and 2D Farm, pick **2D RPG** for combat-first games and **2D Farm** for resource/activity-first games.
 
 ---
 
-## Examples of Popular Games → Skill
+## Examples of Popular Games → Template
 
-| Game | Closest skill |
-|------|--------------|
-| The Legend of Zelda: Link's Awakening | **adventure-rpg** |
-| Stardew Valley | **farming-game** |
-| Minecraft | **open-world** |
-| Hades | **adventure-rpg** |
-| Terraria (2D) | **adventure-rpg** + **farming-game** (building/crafting) |
-| My Time at Portia | **farming-game** + **adventure-rpg** (combat) |
-| Vampire Survivors | **adventure-rpg** (enemy spawning + projectiles) |
-| Animal Crossing | **farming-game** |
-| Rune Factory | **farming-game** + **adventure-rpg** (dungeon combat) |
-| Valheim (2D version) | **farming-game** + **adventure-rpg** + **open-world** (world size) |
+| Game | Closest template |
+|------|-----------------|
+| The Legend of Zelda: Link's Awakening | **2D RPG** |
+| Stardew Valley | **2D Farm** |
+| Minecraft | **3D Voxel** |
+| Hades | **2D RPG** |
+| Terraria (2D) | **2D RPG** + **2D Farm** (building/crafting) |
+| My Time at Portia | **2D Farm** + **2D RPG** (combat) |
+| Vampire Survivors | **2D RPG** (enemy spawning + projectiles) |
+| Animal Crossing | **2D Farm** |
+| Rune Factory | **2D Farm** + **2D RPG** (dungeon combat) |
+| Valheim (2D version) | **2D Farm** + **2D RPG** + **3D Voxel** (world size) |
