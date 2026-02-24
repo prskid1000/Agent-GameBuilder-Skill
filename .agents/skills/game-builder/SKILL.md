@@ -1,342 +1,211 @@
 ---
 name: game-builder
 description: >
-  Complete, self-contained skill for building Godot 4 games of any type:
-  2D adventure/RPG, 2D farming/life-sim, 3D voxel open-world, or any hybrid.
-  Contains full architecture, code, scenes, enums, data tables, combat systems,
-  farming mechanics, voxel chunk rendering, UI, audio, save/load, shaders,
-  asset prompts (ComfyUI), and step-by-step build guides for all three game
-  archetypes. Diagnoses what the user wants to build, routes to the correct
-  references, and can combine mechanics across types (e.g. voxel + RPG combat,
-  farming + dungeon, open-world + inventory).
+  Universal Godot 4 game building skill. Covers ALL game genres: 2D (top-down,
+  platformer, side-scroller, puzzle), 3D (FPS, TPS, voxel, racing, open-world),
+  and all gameplay systems (combat, inventory, AI, dialogue, save/load, audio,
+  multiplayer). Every code hint references .docs/ for correct Godot API syntax.
+  Diagnoses what the user wants, routes to the correct architecture, and builds
+  production-quality games step by step.
 ---
 
-# Game Builder — Complete Godot 4 Game Skill
+# Game Builder — Universal Godot 4 Skill
 
-This skill builds complete, production-quality games in Godot 4. It covers three
-game archetypes and any hybrid combination. All code, scenes, data, and build
-instructions are self-contained in this skill's references.
+Builds any type of game in Godot 4. Routes to the correct architecture based on
+what the user describes, then follows structured build plans with .docs-verified
+API usage.
 
 ---
 
 ## Quick Start — What Are You Building?
 
 ```
-Is it 3D?
-├── YES → Does it involve placing/breaking blocks or a voxel world?
-│         ├── YES → 3D Voxel Open-World  (→ references/3d-voxel/)
-│         └── NO  → 3D Voxel base + 2D RPG combat (hybrid)
-│
-└── NO (2D) → Does it primarily involve:
-              ├── Combat, dungeons, bosses, enemies, progression?
-              │   → 2D Adventure RPG  (→ references/2d-rpg/)
-              ├── Farming, fishing, seasons, crafting, life-sim?
-              │   → 2D Farming Game  (→ references/2d-farming/)
-              ├── BOTH (farming + combat / dungeon)?
-              │   → 2D Farming base + 2D RPG combat (hybrid)
-              └── Open overworld with towns / quests?
-                  → 2D RPG (level system) + 2D Farming (life-sim)
+What dimension?
++-- 2D
+|   +-- Side-view with gravity/jumping?  -> 2D Platformer
+|   +-- Top-down movement (8-dir)?       -> 2D Top-Down (RPG/adventure/farming)
+|   +-- Side-scrolling (no platforming)? -> 2D Side-Scroller (beat-em-up/shooter)
+|   +-- Grid/tile-based logic?           -> 2D Puzzle / Strategy
+|   +-- Physics-driven?                  -> 2D Physics Game
+|
++-- 3D
+|   +-- First-person view?              -> 3D FPS / First-Person
+|   +-- Third-person camera?            -> 3D TPS / Action-Adventure
+|   +-- Block placing / voxel world?    -> 3D Voxel (Minecraft-like)
+|   +-- Vehicle / racing?               -> 3D Racing
+|   +-- Open world exploration?         -> 3D Open-World
+|
++-- Not sure -> Describe your game and I'll route you
 ```
 
-Full genre routing: **[Decision Guide](references/decision-guide.md)**
-Feature comparison: **[Feature Matrix](references/feature-matrix.md)**
-Hybrid recipes: **[Cross-Skill Patterns](references/cross-skill-patterns.md)**
+### Genre -> Architecture Map
+
+| Genre | Dimension | Architecture | Reference |
+|-------|-----------|-------------|-----------|
+| Platformer (Mario, Celeste, Hollow Knight) | 2D | CharacterBody2D Grounded mode | 2d-games.md > Platformer |
+| Top-down RPG (Zelda, Hades) | 2D | CharacterBody2D Floating mode | 2d-games.md > Top-Down |
+| Farming sim (Stardew Valley) | 2D | Top-down + TileMap + day cycle | 2d-games.md > Top-Down |
+| Metroidvania | 2D | Platformer + interconnected map | 2d-games.md > Platformer |
+| Bullet hell / twin-stick shooter | 2D | Top-down + projectile pool | 2d-games.md > Top-Down |
+| Puzzle / match-3 / grid-based | 2D | Grid array + TileMapLayer | 2d-games.md > Puzzle/Grid |
+| Visual novel / dialogue-heavy | 2D | Control nodes + dialogue system | game-systems.md > Dialogue |
+| Beat-em-up / side-scroll action | 2D | Side-scroller + combat | 2d-games.md > Side-Scroller |
+| Tower defense | 2D | Top-down + path follow + waves | 2d-games.md > Top-Down |
+| FPS (Doom, Half-Life) | 3D | CharacterBody3D + Camera3D | 3d-games.md > First-Person |
+| Third-person action (Souls-like) | 3D | CharacterBody3D + SpringArm3D | 3d-games.md > Third-Person |
+| Voxel / Minecraft-like | 3D | Chunk system + ArrayMesh | 3d-games.md > Voxel |
+| Racing (arcade or sim) | 3D | VehicleBody3D or RigidBody3D | 3d-games.md > Racing |
+| 3D platformer (Mario 64) | 3D | CharacterBody3D + Camera3D orbit | 3d-games.md > Third-Person |
+| Horror / stealth | 3D/2D | FPS or TPS + AI detection | 3d-games.md + game-systems.md > AI |
+| Survival crafting | 3D | Voxel/open-world + inventory + crafting | 3d-games.md + game-systems.md |
+| Multiplayer | Any | ENet/WebSocket/WebRTC | game-systems.md > Multiplayer |
 
 ---
 
-## Reference File Map
+## Reference Files
 
-### Shared / Universal
-
-| File | Description |
-|------|-------------|
-| [Decision Guide](references/decision-guide.md) | Genre → game type routing, feature checklist, popular games mapping |
-| [Feature Matrix](references/feature-matrix.md) | Every feature compared across all 3 game types |
-| [Cross-Skill Patterns](references/cross-skill-patterns.md) | 5 hybrid game recipes with build orders and integration points |
-| [Godot Engine Guide](references/godot-engine-guide.md) | Godot editor tutorial: layout, scenes, importing, TileMap, AnimationTree, Camera2D |
-| [Godot Concepts](references/godot-concepts.md) | 15 Godot concepts: AnimationTree, TileMapLayer, Resources, @tool, Signals, Tweens, Y-Sort, Shaders |
-| [Asset Prompts (ComfyUI)](references/asset-prompts-comfyui.md) | OpenDUI/Flux Kontext/Chatterbox TTS prompts for all game types |
-
-### 2D Adventure RPG (`references/2d-rpg/`)
-
-| File | Description |
-|------|-------------|
-| [Step-by-Step Build Guide](references/2d-rpg/step-by-step-guide.md) | 16-phase build with exact code: setup → player → combat → enemies → levels → UI → polish |
-| [Enums & Data Tables](references/2d-rpg/enums-data.md) | All enums, stat tables, drop tables, PlayerStats resource, EventBus signals |
-| [Combat & Enemies](references/2d-rpg/combat-enemies.md) | Melee/ranged/AOE combat, 6 enemy types (Grunt/Archer/Mage/Shield/Exploder/Boss), NavMesh AI |
-| [Level Building](references/2d-rpg/level-building.md) | TileMap terrain, rooms, indoor/outdoor, roof fade, transitions, multi-floor dungeons, lighting |
-| [UI, Audio & Save](references/2d-rpg/ui-audio-save.md) | HUD, inventory (30-slot drag-drop), dialogue, audio manager, save/load (JSON, 3 slots) |
-
-### 2D Farming / Life-Sim (`references/2d-farming/`)
-
-| File | Description |
-|------|-------------|
-| [Step-by-Step Build Guide](references/2d-farming/step-by-step-guide.md) | 12-step build: setup → player → level → objects → shaders → UI → plants → house → day/night |
-| [Project Config](references/2d-farming/project-config.md) | Full project.godot, input map, physics layers, tile size, autoloads |
-| [Enums & Data](references/2d-farming/enums-data.md) | Farming enums (Style/State/Tool/Machine/Seed/Item/Shop), data constants |
-| [All Scripts](references/2d-farming/scripts.md) | Full annotated source for ALL scripts: player, level, plant, tree, blob, machines, UI, shaders |
-| [All Scene Trees](references/2d-farming/scenes.md) | Complete scene tree for every .tscn file |
-| [Scene Files (.tscn)](references/2d-farming/scene-files.md) | Line-by-line .tscn annotations (~1300 lines) |
-| [Screen-by-Screen Guide](references/2d-farming/screen-by-screen.md) | Every visual element mapped to its node/script/function |
-| [Asset Paths](references/2d-farming/assets.md) | Complete asset path list: characters, tilesets, plants, icons, machines, UI, audio |
-
-### 3D Voxel Open-World (`references/3d-voxel/`)
-
-| File | Description |
-|------|-------------|
-| [Step-by-Step Build Guide](references/3d-voxel/step-by-step-guide.md) | 11-step build: setup → blocks → shaders → chunks → generator → DB → player → sky → HUD → world |
-| [Project Config](references/3d-voxel/project-config.md) | Full project.godot, input map, Jolt Physics, godot-sqlite addon setup |
-| [All Scripts](references/3d-voxel/scripts.md) | Full source: block, face, chunk, generator, database, player, sky, hud, world, shaders |
-| [All Scene Trees](references/3d-voxel/scenes.md) | Scene tree for world, player, sky, hud, chunk (runtime) |
-| [Block Data](references/3d-voxel/block-data.md) | Block types, texture coords, spritesheet layout, transparency/light rules, face culling |
+| File | What It Covers |
+|------|---------------|
+| [Godot Foundations](references/godot-foundations.md) | Core Godot concepts, ALL .docs paths, engine guide, project setup patterns, asset prompts |
+| [2D Games](references/2d-games.md) | Platformer, top-down, side-scroller, puzzle/grid — scene trees, movement, physics, cameras |
+| [3D Games](references/3d-games.md) | First-person, third-person, voxel, racing, open-world — scene trees, cameras, shaders |
+| [Game Systems](references/game-systems.md) | Combat, AI, inventory, dialogue, quests, save/load, audio, UI, multiplayer, day/night |
 
 ---
 
-## Feature Routing — Find Any Feature
+## Universal Build Workflow
 
-| Feature | Game Type | Reference |
-|---------|-----------|-----------|
-| **Player movement (2D, 8-dir, AnimationTree)** | 2D RPG / Farming | `2d-rpg/step-by-step-guide.md` Phase 3 |
-| **Player movement (3D, first-person)** | 3D Voxel | `3d-voxel/scripts.md` → player.gd |
-| **Combat — melee, hitbox, combo** | 2D RPG | `2d-rpg/combat-enemies.md` |
-| **Combat — ranged, projectiles** | 2D RPG | `2d-rpg/combat-enemies.md` Phase 6 |
-| **Combat — AOE, magic** | 2D RPG | `2d-rpg/combat-enemies.md` Phase 6 |
-| **Enemy AI — NavMesh2D pathfinding** | 2D RPG | `2d-rpg/combat-enemies.md` Phase 7 |
-| **Enemy types (Grunt/Archer/Mage/Boss)** | 2D RPG | `2d-rpg/combat-enemies.md` Phase 8 |
-| **Boss fights with phases** | 2D RPG | `2d-rpg/combat-enemies.md` Phase 12 |
-| **Farming tools (hoe/water/seed)** | 2D Farming | `2d-farming/step-by-step-guide.md` Step 6 |
-| **Farming machines (sprinkler/scarecrow/fisher)** | 2D Farming | `2d-farming/scripts.md` → machine scripts |
-| **Fishing minigame** | 2D Farming | `2d-farming/scripts.md` → fishing_game.gd |
-| **Day/night cycle (2D, gradient)** | 2D Farming | `2d-farming/step-by-step-guide.md` Step 11 |
-| **Day/night cycle (3D, sky)** | 3D Voxel | `3d-voxel/scripts.md` → sky.gd |
-| **Rain system + weather** | 2D Farming | `2d-farming/scripts.md` → level.gd |
-| **TileMap terrain autotiling** | 2D RPG / Farming | `2d-rpg/level-building.md` |
-| **Plant growth system + resources** | 2D Farming | `2d-farming/scripts.md` → plant_res.gd |
-| **Inventory system (grid, drag-drop)** | 2D RPG | `2d-rpg/ui-audio-save.md` Phase 13 |
-| **Equipment slots + stats** | 2D RPG | `2d-rpg/enums-data.md` |
-| **Dialogue system (typewriter, branching)** | 2D RPG | `2d-rpg/ui-audio-save.md` Phase 13 |
-| **Save / load system (JSON)** | 2D RPG | `2d-rpg/ui-audio-save.md` Phase 15 |
-| **Audio system (pooled SFX, music crossfade)** | 2D RPG | `2d-rpg/ui-audio-save.md` Phase 14 |
-| **Chunk loading (3D voxel)** | 3D Voxel | `3d-voxel/scripts.md` → world.gd + chunk.gd |
-| **Procedural terrain (noise)** | 3D Voxel | `3d-voxel/scripts.md` → generator.gd |
-| **ArrayMesh block rendering** | 3D Voxel | `3d-voxel/block-data.md` |
-| **SQLite persistence** | 3D Voxel | `3d-voxel/scripts.md` → database.gd |
-| **Dynamic lighting (torches)** | 3D Voxel | `3d-voxel/block-data.md` → Light Emission |
-| **Flash shader (hit feedback)** | 2D Farming (reusable) | `2d-farming/scripts.md` → flash_sprite_2d.gd |
-| **Circle wipe transition shader** | 2D Farming (reusable) | `2d-farming/scripts.md` → shaders |
-| **Screen shake + hit-stop** | 2D RPG | `2d-rpg/step-by-step-guide.md` Phase 16 |
-| **Damage numbers + combo counter** | 2D RPG | `2d-rpg/step-by-step-guide.md` Phase 16 |
-| **HUD (HP bar, minimap, hotbar)** | 2D RPG | `2d-rpg/ui-audio-save.md` Phase 13 |
-| **Simple HUD (tool/block selector)** | 2D Farm / 3D Voxel | farming: `2d-farming/step-by-step-guide.md` Step 8; voxel: `3d-voxel/scripts.md` → hud.gd |
-| **Enums + Data autoloads** | 2D Farming | `2d-farming/enums-data.md` |
-| **Event bus (decoupled signals)** | 2D RPG | `2d-rpg/enums-data.md` |
+Every game follows this order regardless of genre:
+
+### Phase 1: Foundation
+1. Project settings (resolution, renderer, texture filter, physics engine)
+2. Input map (all actions with keyboard + controller bindings)
+3. Physics/collision layers (named in Project Settings)
+4. Autoloads (Enum, Data, EventBus as needed)
+5. Folder structure: `audio/`, `global/`, `graphics/`, `scenes/`, `shaders/`, `resources/`
+
+### Phase 2: Player
+6. Player scene (CharacterBody2D or CharacterBody3D)
+7. Movement system (genre-appropriate: platformer gravity, top-down 8-dir, FPS mouselook)
+8. Animation system (AnimationTree for 2D directional, AnimationPlayer for 3D)
+9. Camera (Camera2D smooth follow, Camera3D with SpringArm3D, etc.)
+
+### Phase 3: World
+10. Level/world scene structure
+11. Terrain system (TileMapLayer for 2D, mesh/voxel for 3D)
+12. Navigation (NavigationRegion2D/3D for enemy pathfinding)
+13. Level transitions or chunk loading
+
+### Phase 4: Gameplay
+14. Core mechanic (combat, farming, building, puzzles — genre-specific)
+15. Enemy/NPC AI (state machine or behavior tree)
+16. Items, inventory, resources
+
+### Phase 5: Polish
+17. UI/HUD (health bars, menus, dialogue)
+18. Audio (SFX pooling, music crossfade)
+19. Save/load system
+20. VFX, shaders, screen effects
+21. Playtesting and balance
 
 ---
 
-## Architecture Overview — All Game Types
+## .docs Godot API Reference (ALWAYS USE)
 
-### 2D Adventure RPG
+**CRITICAL:** Before writing ANY Godot API call, verify the correct syntax in `.docs/godot-docs-md/`. The agent MUST reference these docs for every class, method, property, and signal used. This prevents incorrect API usage.
 
-```
-GameManager (Autoload)          ← global state, scene switching, save/load
-  │
-  ├── Level_01.tscn             ← first outdoor level
-  │     ├── World               Node2D  (tilemap layers, lights)
-  │     ├── Entities            Node2D  (player + enemies, y-sorted)
-  │     ├── Projectiles         Node2D  (bullets, arrows, spells)
-  │     ├── VFX                 Node2D  (hit sparks, explosions)
-  │     ├── Doors               Node2D  (level transition triggers)
-  │     └── UI                  CanvasLayer
-  │
-  ├── Dungeon_01_Floor_1.tscn
-  ├── Boss_01.tscn
-  └── ...
-```
+### Most-Used Class References
 
-**Autoloads:** GameManager, Enum, Data, AudioManager, EventBus
-**Physics layers:** Terrain(1), Player(2), Enemy(3), PlayerHitbox(4), EnemyHitbox(5), Projectile(6), Interactable(7), Item(8)
+| Class | .docs Path | Used For |
+|-------|-----------|----------|
+| CharacterBody2D | `.docs/godot-docs-md/classes/class_characterbody2d.md` | 2D player/enemy movement |
+| CharacterBody3D | `.docs/godot-docs-md/classes/class_characterbody3d.md` | 3D player/enemy movement |
+| RigidBody2D | `.docs/godot-docs-md/classes/class_rigidbody2d.md` | Physics-driven 2D objects |
+| RigidBody3D | `.docs/godot-docs-md/classes/class_rigidbody3d.md` | Physics-driven 3D objects |
+| StaticBody2D | `.docs/godot-docs-md/classes/class_staticbody2d.md` | Non-moving 2D colliders |
+| StaticBody3D | `.docs/godot-docs-md/classes/class_staticbody3d.md` | Non-moving 3D colliders |
+| Area2D | `.docs/godot-docs-md/classes/class_area2d.md` | Triggers, hitboxes, pickups |
+| Area3D | `.docs/godot-docs-md/classes/class_area3d.md` | 3D triggers and detection |
+| AnimationTree | `.docs/godot-docs-md/classes/class_animationtree.md` | Complex animation blending |
+| AnimationPlayer | `.docs/godot-docs-md/classes/class_animationplayer.md` | Direct animation playback |
+| TileMapLayer | `.docs/godot-docs-md/classes/class_tilemaplayer.md` | 2D tile-based levels |
+| NavigationAgent2D | `.docs/godot-docs-md/classes/class_navigationagent2d.md` | 2D enemy pathfinding |
+| NavigationAgent3D | `.docs/godot-docs-md/classes/class_navigationagent3d.md` | 3D enemy pathfinding |
+| Camera2D | `.docs/godot-docs-md/classes/class_camera2d.md` | 2D camera follow/limits |
+| Camera3D | `.docs/godot-docs-md/classes/class_camera3d.md` | 3D camera |
+| SpringArm3D | `.docs/godot-docs-md/classes/class_springarm3d.md` | TPS camera collision |
+| RayCast2D | `.docs/godot-docs-md/classes/class_raycast2d.md` | 2D line-of-sight/interaction |
+| RayCast3D | `.docs/godot-docs-md/classes/class_raycast3d.md` | 3D aiming/block interaction |
+| Input | `.docs/godot-docs-md/classes/class_input.md` | Input reading |
+| VehicleBody3D | `.docs/godot-docs-md/classes/class_vehiclebody3d.md` | Racing vehicle physics |
+| VehicleWheel3D | `.docs/godot-docs-md/classes/class_vehiclewheel3d.md` | Wheel physics |
+| ArrayMesh | `.docs/godot-docs-md/classes/class_arraymesh.md` | Custom mesh generation |
+| FastNoiseLite | `.docs/godot-docs-md/classes/class_fastnoiselite.md` | Procedural generation |
+| WorkerThreadPool | `.docs/godot-docs-md/classes/class_workerthreadpool.md` | Async heavy tasks |
+| Resource | `.docs/godot-docs-md/classes/class_resource.md` | Custom data containers |
+| Texture2DArray | `.docs/godot-docs-md/classes/class_texture2darray.md` | Spritesheet arrays |
+| ShaderMaterial | `.docs/godot-docs-md/classes/class_shadermaterial.md` | Custom shaders |
+| MultiplayerAPI | `.docs/godot-docs-md/classes/class_multiplayerapi.md` | Networking |
+| ENetMultiplayerPeer | `.docs/godot-docs-md/classes/class_enetmultiplayerpeer.md` | ENet networking |
+| Mutex | `.docs/godot-docs-md/classes/class_mutex.md` | Thread safety |
+| FileAccess | `.docs/godot-docs-md/classes/class_fileaccess.md` | File I/O for saves |
+| JSON | `.docs/godot-docs-md/classes/class_json.md` | JSON serialization |
+| Tween | `.docs/godot-docs-md/classes/class_tween.md` | Code-based animation |
+| Timer | `.docs/godot-docs-md/classes/class_timer.md` | Timed events |
+| GPUParticles2D | `.docs/godot-docs-md/classes/class_gpuparticles2d.md` | 2D particle effects |
+| GPUParticles3D | `.docs/godot-docs-md/classes/class_gpuparticles3d.md` | 3D particle effects |
 
-### 2D Farming / Life-Sim
+### Key Tutorials
 
-```
-Level (Node2D, level.gd)
-  ├── Layers/    WaterLayer, GrassLayer, SoilLayer, SoilWaterLayer, RainFloorParticles
-  ├── Objects/   Player, ScareCrow, House, Trees×31, SimpleObjects×37
-  ├── Overlay/   DayTimeColor, CanvasLayer(DayTransitionLayer, PlantInfoContainer),
-  │              RainDropsParticles, MachinePreviewSprite
-  ├── Timers/    DayTimer(120s), BlobTimer(20s)
-  └── BlobSpawnPositions/  Marker2D×11
-```
-
-**Autoloads:** Enum, Data
-**Physics layers:** Terrain(1), Player(2), Objects(3), Characters(4)
-
-### 3D Voxel Open-World
-
-```
-World (Node, world.gd)          ← chunk manager + orchestrator
-  ├── Player (CharacterBody3D)  ← first-person, place/break blocks
-  ├── Sky (sky.gd)              ← day/night cycle, DirectionalLight3D
-  ├── Generator (generator.gd)  ← terrain noise + tree/foliage
-  ├── Database (database.gd)    ← godot-sqlite: blocks, player, sky
-  ├── HUD (hud.gd)              ← stats overlay + current block
-  └── [Chunk nodes at runtime]  ← StaticBody3D, ArrayMesh, OmniLight3D
-```
-
-**Autoloads:** GDCraftResources (shader materials + Texture2DArray)
-**Key patterns:** Chunked world (10x128x10), WorkerThreadPool async, ArrayMesh face culling, SQLite persistence, 3 shader types (opaque/transparent/sprite)
-
----
-
-## Shared Patterns (Reusable Across Any Game Type)
-
-### Flash hit feedback
-```gdscript
-# Works for any Sprite2D — attach FlashSprite2D child with flash.tres material
-func flash(start=0.2, end=0.2, callback=Callable()):
-    var tween = create_tween()
-    tween.tween_property(material, 'shader_parameter/Progress', 1.0, start)
-    if callback.is_valid(): tween.tween_callback(callback)
-    tween.tween_property(material, 'shader_parameter/Progress', 0.0, end)
-```
-
-### Circle wipe transition
-```gdscript
-# Reuse for scene transitions, day restarts, boss intros
-tween.tween_property(material, "shader_parameter/progress", 1.0, 1.0)
-tween.tween_interval(0.5)
-tween.tween_callback(do_transition)
-tween.tween_property(material, "shader_parameter/progress", 0.0, 1.0)
-```
-
-### Day/night color gradient (2D)
-- Use `CanvasModulate` + `Gradient` + `DayTimer` sampled in `_process`.
-- Gradient points: morning warm → white → white → night blue.
-
-### Day/night sky cycle (3D)
-- 4-phase lerp (sunrise/day/sunset/night) on `ProceduralSkyMaterial`.
-- `DirectionalLight3D` energy = `clamp(sin(angle), 0, 1)`.
-
-### AnimationTree (2D player)
-- BlendTree → MoveStateMachine (Idle/Walk BlendSpace2D) → ToolOneShot → Output.
-- Both 2D RPG and 2D Farming use this same structure.
-
-### Async WorkerThreadPool (any heavy computation)
-```gdscript
-set_flag(Flag.WORKING)
-var task_id = WorkerThreadPool.add_task(_heavy_function)
-world.add_task_id(task_id)
-# In _heavy_function:
-_end_function.call_deferred(WorkerThreadPool.get_caller_task_id())
-```
+| Topic | .docs Path |
+|-------|-----------|
+| Using CharacterBody2D | `.docs/godot-docs-md/tutorials/physics/using_character_body_2d.md` |
+| Input handling | `.docs/godot-docs-md/tutorials/inputs/input_examples.md` |
+| Physics introduction | `.docs/godot-docs-md/tutorials/physics/physics_introduction.md` |
+| 3D transforms | `.docs/godot-docs-md/tutorials/3d/using_transforms.md` |
+| Singletons/Autoload | `.docs/godot-docs-md/tutorials/scripting/singletons_autoload.md` |
+| Signals | `.docs/godot-docs-md/tutorials/scripting/gdscript/gdscript_signals.md` |
+| GDScript basics | `.docs/godot-docs-md/tutorials/scripting/gdscript/gdscript_basics.md` |
+| High-level multiplayer | `.docs/godot-docs-md/tutorials/networking/high_level_multiplayer.md` |
+| Project organization | `.docs/godot-docs-md/tutorials/best_practices/project_organization.md` |
+| 3D spring arm camera | `.docs/godot-docs-md/tutorials/3d/spring_arm.md` |
 
 ---
 
-## Build Workflow by Game Type
+## Mandatory Guidelines
 
-### 2D Adventure RPG — 16 Phases
-1. Project setup → 2. Global scripts → 3. Player + AnimationTree → 4. Stats + Inventory →
-5. Melee combat → 6. Ranged + projectiles → 7. Enemy base → 8. Enemy types →
-9. Outdoor level → 10. Indoor/dungeon → 11. Level transitions → 12. Boss fight →
-13. UI system → 14. Audio → 15. Save/load → 16. Polish (shake, hit-stop, combo, VFX)
+### .docs Verification Rule
 
-**Full guide:** [references/2d-rpg/step-by-step-guide.md](references/2d-rpg/step-by-step-guide.md)
+**Every line of Godot API code must be verifiable against .docs.** Before using any class, method, or property:
+1. Check `.docs/godot-docs-md/classes/class_[name].md` for correct signature
+2. Verify parameter types and return types
+3. Check for deprecated methods (Godot 4 renamed many things from Godot 3)
+4. Cite the .docs path in code comments when using non-obvious API
 
-### 2D Farming Game — 12 Steps
-1. Project setup → 2. Enum + Data → 3. Player scene → 4. AnimationTree (editor) →
-5. Level + TileMaps → 6. Objects (plant/tree/blob/machines) → 7. Flash + shaders →
-8. UI scenes → 9. PlantResource → 10. House scene → 11. Day/night cycle → 12. Final layout
+### Incremental Verification
 
-**Full guide:** [references/2d-farming/step-by-step-guide.md](references/2d-farming/step-by-step-guide.md)
+After every build phase, the game must run cleanly:
+1. Run project (F5) — confirm main scene loads
+2. No runtime or parse errors in Output/Debugger
+3. New behavior is testable
+4. Fix errors before proceeding
 
-### 3D Voxel Open-World — 11 Steps
-1. Project + addon → 2. Face + Block classes → 3. Resources autoload → 4. Shaders →
-5. Chunk → 6. Generator → 7. Database → 8. Player → 9. Sky → 10. HUD → 11. World + assembly
+### Animation Standard (2D)
 
-**Full guide:** [references/3d-voxel/step-by-step-guide.md](references/3d-voxel/step-by-step-guide.md)
+- Horizontal frame strips per action/direction
+- Set h_frames/v_frames on Sprite2D
+- Prefer flip_h for left-facing
+- `.docs/godot-docs-md/classes/class_sprite2d.md` for frame properties
 
-### Hybrid Game — Use Cross-Skill Patterns
-**[Cross-Skill Patterns](references/cross-skill-patterns.md)** has 5 ready-to-use recipes:
-1. Farming + Combat (Rune Factory style)
-2. RPG Overworld + Life-Sim Town
-3. Voxel + RPG Combat
-4. Voxel + Survival Crafting
-5. Roguelite Dungeon
+### Asset Prompt Generation (ComfyUI)
+
+Generate independent prompts for: OpenDUI (text-to-image), Flux Kontext (image edit), Chatterbox TTS (text-to-speech). One prompt per asset, no "same as above". Details in godot-foundations.md.
 
 ---
 
-## Using Godot Engine Documentation (@.docs)
+## Example Reference Files
 
-For any Godot API lookup, use the project's `.docs/godot-docs-md/`:
-
-- `classes/class_characterbody2d.md` — 2D player physics
-- `classes/class_characterbody3d.md` — 3D player physics
-- `classes/class_navigationagent2d.md` — enemy pathfinding
-- `classes/class_animationtree.md` — animation state machines
-- `classes/class_tilemaplayer.md` — TileMap terrain + custom data
-- `classes/class_workerthreadpool.md` — async tasks
-- `classes/class_arraymesh.md` — custom 3D mesh building
-- `classes/class_fastnoiselite.md` — procedural generation
-- `tutorials/` — step-by-step Godot guides
-
-Do not guess Godot API behavior; look it up and cite when relevant.
-
----
-
-## Incremental Verification (Required)
-
-After every phase/step, the game must run cleanly:
-1. Run project (F5) — confirm main scene loads.
-2. No runtime or parse errors in Output/Debugger.
-3. New behavior is testable (player moves, tools work, chunks generate, etc.).
-
-Fix errors before proceeding. Never leave the project in a broken state.
-
----
-
-## Animation Standard (Required)
-
-All 2D animations must use **side-by-side horizontal frame strips**:
-- One row per action/direction (idle, walk, attack, tool use).
-- Frames ordered left-to-right within each row.
-- Set `h_frames` = frame count, `v_frames` = row count.
-- Prefer `flip_h` for left-facing instead of unique left art.
-
-For 3D voxel: keep block textures as static atlas tiles; this rule applies only to animated assets.
-
----
-
-## Asset Prompt Generation (ComfyUI)
-
-Generate **independent, complete** prompts for:
-- **OpenDUI / OpenDiT** — text-to-image (sprites, tiles, block textures, VFX).
-- **Flux Kontext** — image edit / style transfer / character consistency.
-- **Chatterbox TTS** — text-to-speech (dialogue, barks, narration).
-
-One prompt per asset; no "same as above". Full rules and examples for all game types:
-**[Asset Prompts for ComfyUI](references/asset-prompts-comfyui.md)**
-
----
-
-## Quick-Start by Game Type
-
-### "I want to make an RPG / action game"
-1. Read [references/2d-rpg/step-by-step-guide.md](references/2d-rpg/step-by-step-guide.md)
-2. New to Godot? Read [references/godot-engine-guide.md](references/godot-engine-guide.md) first
-
-### "I want to make a farming / life-sim game"
-1. Read [references/2d-farming/step-by-step-guide.md](references/2d-farming/step-by-step-guide.md)
-2. Reference example at `.examples/godot-valley/`
-
-### "I want to make a Minecraft / voxel / open-world game"
-1. Read [references/3d-voxel/step-by-step-guide.md](references/3d-voxel/step-by-step-guide.md)
-2. Reference example at `.examples/godot-craft/`
-3. Install `addons/godot-sqlite/` (copy from `.examples/godot-craft/addons/`)
-
-### "I want to make a hybrid (e.g. farming + combat)"
-1. Read [references/cross-skill-patterns.md](references/cross-skill-patterns.md)
-2. Follow the recipe for your hybrid type
-
-### "I don't know what I want yet"
-1. Read [references/decision-guide.md](references/decision-guide.md)
-2. Answer the genre questions to find the right game type
+Working examples live in `.examples/`:
+- `.examples/godot-valley/` — 2D farming/life-sim
+- `.examples/godot-craft/` — 3D voxel open-world
+- `.examples/godot-craft/addons/godot-sqlite/` — SQLite addon (copy for voxel games)
